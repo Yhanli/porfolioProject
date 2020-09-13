@@ -27,8 +27,9 @@ class Portfolio extends Component {
 
     render(){
         const {loading, pageContent, portfolios} = this.state;
-
-        if (!loading){
+        const ready = (!loading && portfolios !== null && pageContent !== null)
+        if (ready){
+            console.log(loading);
             return (
                 <Fragment>
                     <div>
