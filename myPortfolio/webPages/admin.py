@@ -5,6 +5,10 @@ import nested_admin
 
 # Register your models here.
 
+admin.site.site_header = "Admin"
+admin.site.site_title = "Admin Portal"
+admin.site.index_title = "Welcome to My Portfolio"
+
 class PortfolioInline(nested_admin.NestedStackedInline):
     model = Portfolio
     classes = ["collapse"]
