@@ -15,6 +15,10 @@ class Portfolios(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = "Portfolio"
+        verbose_name_plural = "Portfolios"
+
 
 class ProjectPictures(models.Model):
     picture = models.ImageField(upload_to="portfolio_content/", blank=True)
