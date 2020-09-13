@@ -9,6 +9,12 @@ class ProjectPicturesInline(admin.TabularInline):
 
 
 class PageAdmin(admin.ModelAdmin):
+    list_display = ['title',
+                    'project_startdate',
+                    'project_enddate',
+                    'created_at',
+                    'updated_at'
+                    ]
     inlines = [ProjectPicturesInline]
 
 
