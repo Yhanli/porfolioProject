@@ -11,7 +11,7 @@ admin.site.index_title = "Welcome to My Portfolio"
 
 class PortfolioInline(nested_admin.NestedStackedInline):
     model = Portfolio
-    classes = ["collapse"]
+    # classes = ["collapse"]
 
 
 class PageAdmin(nested_admin.NestedModelAdmin):
