@@ -32,7 +32,7 @@ class Portfolio extends Component {
             console.log(loading);
             return (
                 <Fragment>
-                    <div>
+                    <div value={pageContent? document.title = `My Portfolio` : ''}>
                         <h1>{pageContent.portfolio.page_title}</h1>
                         <h2>{pageContent.portfolio.name}</h2>
                         <p>{pageContent.portfolio.description}</p>
