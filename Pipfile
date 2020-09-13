@@ -11,7 +11,6 @@ django-rest-knox = "*"
 djangorestframework = "*"
 pillow = "*"
 django-nested-admin = "*"
-automium-web = "*"
 
 [requires]
 python_version = "3.7"
