@@ -4,6 +4,8 @@ import {Route, Switch,BrowserRouter} from 'react-router-dom';
 
 import {Routes} from "./constants"
 
+import "./app.scss"
+
 const Portfolio = lazy(()=>import("./pages/Portfolio"));
 
 class App extends Component {

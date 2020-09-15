@@ -1,6 +1,8 @@
 import React, {Component, Fragment, useState, useEffect} from 'react';
 import axios from 'axios';
 
+import "./portfolio.scss"
+
 class Portfolio extends Component {
     state = {
         loading: true,
@@ -32,25 +34,27 @@ class Portfolio extends Component {
             console.log(loading);
             return (
                 <Fragment>
-                    <div value={pageContent? document.title = `My Portfolio` : ''}>
-                        <h1>{pageContent.portfolio.page_title}</h1>
-                        <h2>{pageContent.portfolio.name}</h2>
-                        <p>{pageContent.portfolio.description}</p>
-                    </div>
+                    <div className={`container`} value={pageContent? document.title = `My Portfolio` : ''}>
+                        <div className={``}>
+                            <h1>{pageContent.portfolio.page_title}</h1>
+                            <h2>{pageContent.portfolio.name}</h2>
+                            <p>{pageContent.portfolio.description}</p>
+                        </div>
 
-                    <div>
-                        {portfolios.map(portfolio => {
-                            const {id, title, description, project_startdate, project_enddate, direct_url, project_image} = portfolio;
-                            return (
-                                <div key={id}>
-                                    <h3>{title}</h3>
-                                    <p>{description}</p>
-                                    <p>{project_startdate} - {project_enddate}</p>
-                                    <p>{direct_url}</p>
-                                    {/*<p>{project_image}</p>*/}
-                                </div>
-                            )
-                        })}
+                        <div>
+                            {portfolios.map(portfolio => {
+                                const {id, title, description, project_startdate, project_enddate, direct_url, project_image} = portfolio;
+                                return (
+                                    <div key={id}>
+                                        <h3>{title}</h3>
+                                        <p>{description}</p>
+                                        <p>{project_startdate} - {project_enddate}</p>
+                                        <p>{direct_url}</p>
+                                        {/*<p>{project_image}</p>*/}
+                                    </div>
+                                )
+                            })}
+                        </div>
                     </div>
 
                 </Fragment>
