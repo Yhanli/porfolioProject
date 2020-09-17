@@ -1,0 +1,26 @@
+
+.imgBgContainer{
+  width: 100vw;
+  height: 20vh;
+  background-color: #b7b5b5;
+  position: absolute;
+  .imgBg{
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+  }
+}
+.gradientBg{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(25,21,83);
+  background: linear-gradient(0deg, rgba(25,21,83,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+
+
+.mainSecondContainer {
+  position: absolute;
+  width: 100%;
+}
