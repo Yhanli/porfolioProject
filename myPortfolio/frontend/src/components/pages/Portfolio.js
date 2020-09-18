@@ -35,12 +35,14 @@ class Portfolio extends Component {
             return (
                 <Fragment>
                     <div className="container">
-                        <div className={`gradientBg`}></div>
-                        <div className={`imgBgContainer`}>
-                            <img className={`imgBg`} src={pageContent.portfolio.front_image} />
+                        <div className={`frontContainer`}>
+                            <div className={`gradientBg`}></div>
+                            <div className={`imgBgContainer`}>
+                                <img className={`imgBg`} src={pageContent.portfolio.front_image} />
+                            </div>
                         </div>
 
-                        <div className={`mainSecondContainer`} value={pageContent? document.title = `My Portfolio` : ''}>
+                        <div className={`mainSectionContainer`} value={pageContent? document.title = `My Portfolio` : ''}>
                             <div className={``}>
                                 <h1>{pageContent.portfolio.page_title}</h1>
                                 <h2>{pageContent.portfolio.name}</h2>
@@ -62,6 +64,8 @@ class Portfolio extends Component {
                                 })}
                             </div>
                         </div>
+
+                        <div className={`secondSectionContainer`}><p>sdasdasdad <br/><br/><br/><br/><br/> sdasdas</p></div>
                     </div>
 
                 </Fragment>
