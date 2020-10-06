@@ -75,15 +75,13 @@ class Portfolio extends Component {
                                                 <h2 className={`marginBelow2`}>{title}</h2>
                                                 <p>{this.previewText(description)}</p>
                                                 {/*<p>{direct_url}</p>*/}
-                                                <div>{project_image.slice(0,4).map(image => {
+                                                <div className={`marginBelow1`}>{project_image.slice(0,4).map(image => {
                                                     const {picture} = image;
                                                     return(
                                                     <img className={`previewImage`} src={picture}/>
                                                     )
-
                                                     }
                                                 )}</div>
-
                                                 <p className={``}>Duration : {this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>
                                         </div>
                                     )
