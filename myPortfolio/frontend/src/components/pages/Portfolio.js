@@ -31,6 +31,16 @@ class Portfolio extends Component {
         return string.split("T")[0];
     }
 
+    previewText = (string) => {
+        const max_length = 240;
+        if (string.length > max_length){
+            return string.substring(0,max_length) + "...";
+        }
+        else{
+            return string;
+        }
+    }
+
     render(){
         const {loading, pageContent, portfolios} = this.state;
         const ready = (!loading && portfolios !== null && pageContent !== null)
@@ -63,9 +73,17 @@ class Portfolio extends Component {
                                     return (
                                         <div key={id} className={`projectPreContainer`}>
                                                 <h2 className={`marginBelow2`}>{title}</h2>
-                                                <p>{description}</p>
+                                                <p>{this.previewText(description)}</p>
                                                 {/*<p>{direct_url}</p>*/}
-                                                {/*<p>{project_image}</p>*/}
+                                                <div>{project_image.slice(0,4).map(image => {
+                                                    const {picture} = image;
+                                                    return(
+                                                    <img className={`previewImage`} src={picture}/>
+                                                    )
+
+                                                    }
+                                                )}</div>
+
                                                 <p className={``}>Duration : {this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>
                                         </div>
                                     )
@@ -79,7 +97,7 @@ class Portfolio extends Component {
             )
         }
         else{
-            return (<div>content not loaded</div>)
+            return (<div></div>)
         }
     }
 }

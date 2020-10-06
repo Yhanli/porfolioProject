@@ -92,7 +92,7 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
       min-width: 430px;
       max-width: 500px;
       width: 95vw;
-      height: 300px;
+      //height: 300px;
       background-color: $portfolioPreviewBoxColor;
       transition: all 0.3s ease-in-out!important;
 
@@ -124,4 +124,9 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
     max-width: 100vw;
     text-align: center;
   }
+}
+
+.previewImage{
+  max-height: 70px;
+  margin-right: 0.5rem;
 }
