@@ -2,6 +2,7 @@ import React, {Component, Fragment, useState, useEffect} from 'react';
 import axios from 'axios';
 
 import "./portfolio.scss"
+import "./../general.scss"
 
 class Portfolio extends Component {
     state = {
@@ -26,6 +27,9 @@ class Portfolio extends Component {
         })
     }
 
+    cleanseDate = (string) => {
+        return string.split("T")[0];
+    }
 
     render(){
         const {loading, pageContent, portfolios} = this.state;
@@ -34,38 +38,41 @@ class Portfolio extends Component {
             console.log(loading);
             return (
                 <Fragment>
-                    <div className="container">
-                        <div className={`frontContainer`}>
-                            <div className={`gradientBg`}></div>
-                            <div className={`imgBgContainer`}>
-                                <img className={`imgBg`} src={pageContent.portfolio.front_image} />
-                            </div>
-                        </div>
+                    <div className="container bgBlueWhite defaultFont">
+                        {/*<div className={`frontContainer`}>*/}
+                        {/*    <div className={`gradientBg`}></div>*/}
+                        {/*    <div className={`imgBgContainer`}>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
 
                         <div className={`mainSectionContainer`} value={pageContent? document.title = `My Portfolio` : ''}>
-                            <div className={``}>
-                                <h1>{pageContent.portfolio.page_title}</h1>
-                                <h2>{pageContent.portfolio.name}</h2>
-                                <p>{pageContent.portfolio.description}</p>
+                            <div className={`topSection`}>
+                                <div className={`twoCol`}>
+                                    <img src={pageContent.portfolio.front_image} />
+                                </div>
+                                <div className={`twoCol`}>
+                                    <h1 className={`marginBelow2`}>{pageContent.portfolio.page_title}</h1>
+                                    <h2 className={`marginBelow1`}>{pageContent.portfolio.name}</h2>
+                                    <p className={`marginBelow1`}>{pageContent.portfolio.description}</p>
+                                </div>
                             </div>
 
-                            <div>
+                            <div className={`secondSectionContainer`}>
                                 {portfolios.map(portfolio => {
                                     const {id, title, description, project_startdate, project_enddate, direct_url, project_image} = portfolio;
                                     return (
-                                        <div key={id}>
-                                            <h3>{title}</h3>
-                                            <p>{description}</p>
-                                            <p>{project_startdate} - {project_enddate}</p>
-                                            <p>{direct_url}</p>
-                                            {/*<p>{project_image}</p>*/}
+                                        <div key={id} className={`projectPreContainer`}>
+                                                <h2 className={`marginBelow2`}>{title}</h2>
+                                                <p>{description}</p>
+                                                {/*<p>{direct_url}</p>*/}
+                                                {/*<p>{project_image}</p>*/}
+                                                <p className={``}>Duration : {this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>
                                         </div>
                                     )
                                 })}
                             </div>
                         </div>
 
-                        <div className={`secondSectionContainer`}><p>sdasdasdad <br/><br/><br/><br/><br/> sdasdas</p></div>
                     </div>
 
                 </Fragment>
