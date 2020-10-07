@@ -56,6 +56,7 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
 .mainSectionContainer {
   position: relative;
   align-content: center;
+  padding-top: 3rem;
   width: 100%;
   top: 0;
   left: 0;
@@ -72,7 +73,7 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
     .twoCol{
       padding: 0 2rem;
       max-width: 49%;
-      //transition: all 0.3s ease-in-out!important;
+      transition: all 0.1s ease-in-out!important;
       img{
         width: 100%;
       }
@@ -93,7 +94,7 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
       flex-direction: column;
       border-radius: 10px;
       padding: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       min-width: 430px;
       max-width: 500px;
       width: 95vw;

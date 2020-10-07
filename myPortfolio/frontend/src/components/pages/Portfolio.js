@@ -71,14 +71,14 @@ class Portfolio extends Component {
                                 {portfolios.map(portfolio => {
                                     const {id, title, description, project_startdate, project_enddate, direct_url, project_image} = portfolio;
                                     return (
-                                        <div key={id} className={`projectPreContainer`}>
+                                        <div key={id} className={`projectPreContainer `}>
                                                 <h2 className={`marginBelow2`}>{title}</h2>
                                                 <p>{this.previewText(description)}</p>
                                                 {/*<p>{direct_url}</p>*/}
                                                 <div className={`marginBelow1`}>{project_image.slice(0,4).map(image => {
                                                     const {picture} = image;
                                                     return(
-                                                    <img className={`previewImage`} src={picture}/>
+                                                        <img className={`previewImage`} src={picture}/>
                                                     )
                                                     }
                                                 )}</div>
