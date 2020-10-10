@@ -84,6 +84,11 @@
     overflow-y: hidden!important;
 }
 
+.modal-image-slide{
+    width: 95%;
+    margin: auto;
+}
+
 @media screen and (max-width:760px ){
     .modal-content .subsection-text h2{
         font-size: 1.7rem;

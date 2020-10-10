@@ -1,9 +1,12 @@
 import React, {Component, Fragment, useState, useEffect} from 'react';
 import axios from 'axios';
+import { Zoom } from 'react-slideshow-image';
 
 import "./portfolio.scss"
 import "./../general.scss"
 import "../modules/modal.css"
+
+import 'react-slideshow-image/dist/styles.css'
 
 class Portfolio extends Component {
 
@@ -73,7 +76,14 @@ class Portfolio extends Component {
 
     };
 
+
+
     render(){
+        const zoomOutProperties = {
+            indicator:true,
+            sacale: 0.4,
+            indicators: i => (<div className="indicator">{i + 1}</div>)
+        };
         const {loading, pageContent, portfolios} = this.state;
         const ready = (!loading && portfolios !== null && pageContent !== null);
         if (ready){
@@ -110,8 +120,12 @@ class Portfolio extends Component {
                                             </div>
                                             <div className={`modal-bg-content`} id={`post-modal-${id}-content`}>
                                                 <div className={`modal-content`}>
-                                                    <div>
-                                                        <p>this is gonna be image</p>
+                                                    <div className={`modal-image-slide`}>
+                                                        <Zoom {...zoomOutProperties}>
+                                                            {project_image.map(
+                                                                image => <img key={image.id} style={{width: "100%"}} src={image.picture}/>
+                                                            )}
+                                                        </Zoom>
                                                     </div>
                                                     <div>
                                                         <p>this is gonna be contents</p>
