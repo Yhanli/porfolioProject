@@ -1,0 +1,95 @@
+.modal-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+}
+
+.modal-active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-bg-content{
+    background-color: gainsboro;
+    position: fixed;
+    top: 46%;
+    left: 50%;
+    z-index: 4;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.5s;
+    transform: translateY(-50%) translateX(-50%);
+
+    width: 95vw;
+    height: auto;
+    max-width: 1500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 20px;
+}
+
+.modal-active-content{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    background-color: white;
+    padding: 2rem 1rem;
+}
+.modal-image{
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.close-modal{
+    position: fixed;
+    top:0;
+    left:95%;
+    padding: 2rem;
+    transform: translateX(-50%);
+    z-index: 6;
+    cursor: pointer;
+}
+.X-left{
+    transform: rotate(45deg);
+}
+.X-right{
+    transform: rotate(-45deg);
+}
+.x-close{
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background-color: black;
+}
+
+.main-stop-scroll{
+    position: static;
+    height: auto!important;
+    overflow-y: hidden!important;
+}
+
+@media screen and (max-width:760px ){
+    .modal-content .subsection-text h2{
+        font-size: 1.7rem;
+    }
+    .modal-content .subsection-text p{
+        font-size: 0.8rem;
+        text-align: justify!important;
+    }
+}

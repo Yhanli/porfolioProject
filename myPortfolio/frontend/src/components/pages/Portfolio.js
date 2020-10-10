@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import "./portfolio.scss"
 import "./../general.scss"
-import "./../parts/modal.css"
+import "../modules/modal.css"
 
 class Portfolio extends Component {
 
