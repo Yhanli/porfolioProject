@@ -58,18 +58,21 @@ class Portfolio extends Component {
         const element = document.getElementById(`post-modal-${id}`);
         const element_content = document.getElementById(`post-modal-${id}-content`);
         const main_html = document.body;
+        const navbar = document.getElementById(`navbar`);
 
         if (!this.state.showModal) {
             element_content.classList.add("modal-active-content");
             element.classList.add("modal-active");
             main_html.classList.add('main-stop-scroll');
             // console.log(main_html.classList)
+            navbar.classList.add('notActive')
         }
 
         else {
             element_content.classList.remove("modal-active-content");
             element.classList.remove("modal-active");
             main_html.classList.remove('main-stop-scroll');
+            navbar.classList.remove('notActive')
         }
 
         this.setState({showModal: !this.state.showModal});
@@ -78,19 +81,20 @@ class Portfolio extends Component {
 
     onSubmit = e =>{
         console.log('submit')
-    }
+    };
 
     onChange = e =>{
         console.log('changed')
-    }
+    };
 
 
 
     render(){
-        const zoomOutProperties = {
+        const zoomInProperties = {
             indicator:"true",
-            sacale: 0.4,
+            scale: 1.4,
             duration: 4000,
+            pauseOnHover: true,
             indicators: i => (<div className="indicator">{i + 1}</div>),
             // prevArrow: <div style={{width: "40px", marginRight: "-40px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M242 180.6v-138L0 256l242 213.4V331.2h270V180.6z"/></svg></div>,
             // nextArrow: <div style={{width: "40px", marginLeft: "-40px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M512 256L270 42.6v138.2H0v150.6h270v138z"/></svg></div>
@@ -107,7 +111,7 @@ class Portfolio extends Component {
                         {/*    <div className={`imgBgContainer`}>*/}
                         {/*    </div>*/}
                         {/*</div>*/}
-                        <div className="topnav">
+                        <div className="topnav" id={`navbar`}>
                             <div className="topnav-right">
                                 <a href="#top">Portfolio</a>
                                 <a href="#projects">My Projects</a>
@@ -129,7 +133,7 @@ class Portfolio extends Component {
                                 </div>
                             </div>
 
-                            <div className={`secondSectionContainer`} id={`projects`}>
+                            <div className={`secondSectionContainer paddingTop5`} id={`projects`}>
                                 {portfolios.map(portfolio => {
                                     const {id, title, description, project_startdate, project_enddate, direct_url,
                                         project_image, source_code_url} = portfolio;
@@ -141,12 +145,8 @@ class Portfolio extends Component {
                                             </div>
                                             <div className={`modal-bg-content`} id={`post-modal-${id}-content`}>
                                                 <div className={`modal-content`}>
-                                                    <div>
-                                                        <h2 className={`mainTitleStyle`}>{title}</h2>
-                                                        <p className={`mainDateStyle marginBelow2`}>{this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>
-                                                    </div>
                                                     <div className={`modal-image-slide`}>
-                                                        <Zoom {...zoomOutProperties}>
+                                                        <Zoom {...zoomInProperties}>
                                                             {project_image.map(
                                                                 image =>
                                                                     <a key={`slid-img-${image.id}`} href={image.picture_direct} target="_blank" style={{width: "100%",
@@ -160,7 +160,11 @@ class Portfolio extends Component {
                                                         </Zoom>
                                                     </div>
                                                     <div>
-                                                        <h4 className={`mainTitleStyle marginBelow1`}>Description</h4>
+                                                        <h2 className={`mainTitleStyle`}>{title}</h2>
+                                                        <p className={`mainDateStyle marginBelow2`}>{this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>
+                                                    </div>
+                                                    <div>
+                                                        <h4 className={`mainSubTitleStyle marginBelow1`}>Description</h4>
                                                         <p className={`mainTextStyle longText marginBelow2`}>{description}</p>
                                                     </div>
                                                     <div className={`mainTextStyle`}>
@@ -178,9 +182,7 @@ class Portfolio extends Component {
                                                 </div>
                                             </div>
 
-                                            <div  className={`projectPreContainer `} onClick={this.showModalAction.bind(this, id)}
-
-                                            >
+                                            <div  className={`projectPreContainer`} onClick={this.showModalAction.bind(this, id)}>
                                                     <h2 className={`marginBelow2`}>
                                                         <i className="fa fa-book"></i>
                                                         &nbsp;
@@ -205,11 +207,11 @@ class Portfolio extends Component {
                                 {pageContent.experiences.map(experience => {
                                     const {id, title, company, location, time_start, time_end, description} = experience;
                                     return(
-                                        <div key={`exp-${id}`} className={`experience-container`}>
-                                            <div>
-                                                <h4>{title}</h4>
-                                                <p><span>At {location} - {company}</span></p>
+                                        <div key={`exp-${id}`} className={`experience-container marginBelow4`}>
+                                            <div style={{marginBottom:'1rem', paddingRight:'1rem'}}>
+                                                <h4 className={`marginBelow1`}>{title}</h4>
                                                 <p><span>{time_start}</span>{time_end ? `- ${time_end}`:''}</p>
+                                                <p><span>At {location} - {company}</span></p>
                                             </div>
                                             <div>
                                                 <p className={`longText`}>{description}</p>

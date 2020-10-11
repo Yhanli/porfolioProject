@@ -11,7 +11,9 @@
 .paddingTop4{
   padding-top: 4rem;
 }
-
+.paddingTop5{
+  padding-top: 5rem;
+}
 .flexBottom{
   align-self: flex-end;
 }
@@ -19,9 +21,12 @@
 .mainTitleStyle{
   margin-left: 2rem;
 }
+.mainSubTitleStyle{
+  margin-left: 2rem;
+}
 
 .mainTextStyle{
-  margin-left: 1.5rem;
+  margin-left: 2rem;
   margin-top: 1rem;;
   color: rgba(0, 0, 0, 0.76);
 }
@@ -34,6 +39,12 @@
   white-space: pre-wrap;
 }
 
+.active{
+  visibility: visible;
+}
+.notActive{
+  visibility: hidden;
+}
 .button {
   border-radius: 4px;
   background-color: #00a7f4;
@@ -84,18 +95,20 @@
 
 .topnav a {
   background-color: rgba(255, 255, 255, 0.8);
-
   float: left;
   color: rgb(0, 0, 0);
   text-align: center;
   padding: 40px 10px 10px 10px;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  //font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: rgba(221, 221, 221, 0.67);
   color: rgba(0, 0, 0, 1);
+  text-decoration: underline;
 }
 
 .topnav a.active {

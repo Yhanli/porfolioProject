@@ -24,6 +24,7 @@ class Portfolio(models.Model):
     webPages = models.OneToOneField(WebPages, on_delete=models.CASCADE)
 
     front_image = models.FileField(upload_to="webpages/portfolio", blank=True)
+    back_image = models.FileField(upload_to="webpages/portfolio", blank=True)
     page_title = models.CharField(max_length=100, default=None, blank=True, null=True)
     name = models.CharField(max_length=100, default=None, blank=True, null=True)
 
