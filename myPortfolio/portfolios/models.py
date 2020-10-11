@@ -15,7 +15,6 @@ class Portfolios(models.Model):
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
-
     project_hours = models.IntegerField(blank=True)
 
     class Meta:

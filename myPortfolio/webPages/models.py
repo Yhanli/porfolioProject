@@ -12,7 +12,7 @@ class WebPages(models.Model):
     twitter = models.CharField(max_length=1000, blank=True)
     git = models.CharField(max_length=1000, blank=True)
     linkedin = models.CharField(max_length=1000, blank=True)
-
+    contact_email = models.EmailField(blank=False)
 
 
     class Meta:

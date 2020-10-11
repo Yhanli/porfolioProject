@@ -90,6 +90,10 @@ DATABASES = {
     }
 }
 
+EMAIL_ACCOUNT = "noreply.djangoautoemail@gmail.com"
+EMAIL_PASSWORD = "django1234567890"
+EMAIL_SERVER = "smtp.gmail.com"
+EMAIL_PORT = 465
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
