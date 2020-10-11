@@ -13,9 +13,12 @@ class PortfolioInline(nested_admin.NestedStackedInline):
     model = Portfolio
     # classes = ["collapse"]
 
+class ExperienceInline(nested_admin.NestedStackedInline):
+    model = Experiences
+    # classes = ["collapse"]
 
 class PageAdmin(nested_admin.NestedModelAdmin):
-    inlines = [PortfolioInline]
+    inlines = [PortfolioInline, ExperienceInline]
 
 
 admin.site.register(WebPages, PageAdmin)

@@ -76,11 +76,19 @@ class Portfolio extends Component {
 
     };
 
+    onSubmit = e =>{
+        console.log('submit')
+    }
+
+    onChange = e =>{
+        console.log('changed')
+    }
+
 
 
     render(){
         const zoomOutProperties = {
-            indicator:true,
+            indicator:"true",
             sacale: 0.4,
             duration: 4000,
             indicators: i => (<div className="indicator">{i + 1}</div>),
@@ -99,20 +107,29 @@ class Portfolio extends Component {
                         {/*    <div className={`imgBgContainer`}>*/}
                         {/*    </div>*/}
                         {/*</div>*/}
+                        <div className="topnav">
+                            <div className="topnav-right">
+                                <a href="#top">Portfolio</a>
+                                <a href="#projects">My Projects</a>
+                                <a href="#experience">My Experiences</a>
+                                <a href="#contact">Contact</a>
+                            </div>
+                        </div>
 
-                        <div className={`mainSectionContainer`} value={pageContent? document.title = `My Portfolio` : ''}>
+                        <div className={`mainSectionContainer`} id={`top`} value={pageContent? document.title = `My Portfolio` : ''}>
+
                             <div className={`topSection`}>
                                 <div className={`twoCol`}>
                                     <img src={pageContent.portfolio.front_image} />
                                 </div>
                                 <div className={`twoCol`}>
-                                    <h1 className={`marginBelow2`}>{pageContent.portfolio.page_title}</h1>
-                                    <h2 className={`marginBelow1`}>{pageContent.portfolio.name}</h2>
-                                    <p className={`marginBelow1`}>{pageContent.portfolio.description}</p>
+                                    <h1 className={`marginBelow1`}>{pageContent.portfolio.name}</h1>
+                                    <h2 className={`marginBelow1`}>{pageContent.portfolio.page_title}</h2>
+                                    <p className={`marginBelow1 longText`}>{pageContent.portfolio.description}</p>
                                 </div>
                             </div>
 
-                            <div className={`secondSectionContainer`}>
+                            <div className={`secondSectionContainer`} id={`projects`}>
                                 {portfolios.map(portfolio => {
                                     const {id, title, description, project_startdate, project_enddate, direct_url,
                                         project_image, source_code_url} = portfolio;
@@ -132,10 +149,10 @@ class Portfolio extends Component {
                                                         <Zoom {...zoomOutProperties}>
                                                             {project_image.map(
                                                                 image =>
-                                                                    <a href={image.picture_direct} target="_blank" style={{width: "100%",
+                                                                    <a key={`slid-img-${image.id}`} href={image.picture_direct} target="_blank" style={{width: "100%",
                                                                         maxHeight:'550px'
                                                                     }}>
-                                                                    <img key={image.id} className={`modal-image`}
+                                                                    <img  className={`modal-image`}
                                                                          title={image.picture_direct ? `${image.picture_alt}` : ''}
                                                                           src={image.picture}
                                                                     /></a>
@@ -171,9 +188,9 @@ class Portfolio extends Component {
                                                     <p>{this.previewText(description)}</p>
                                                     {/*<p>{direct_url}</p>*/}
                                                     <div className={`marginBelow1 previewImageContainer`}>{project_image.slice(0,20).map(image => {
-                                                        const {picture} = image;
+                                                        const {id,picture} = image;
                                                         return(
-                                                            <img className={`previewImage`} src={picture}/>
+                                                            <img key={`img-${id}`} className={`previewImage`} src={picture}/>
                                                         )
                                                         }
                                                     )}</div>
@@ -183,8 +200,86 @@ class Portfolio extends Component {
                                     )
                                 })}
                             </div>
+
+                            <div className={`secondSectionContainer paddingTop4`} id={`experience`}>
+                                {pageContent.experiences.map(experience => {
+                                    const {id, title, company, location, time_start, time_end, description} = experience;
+                                    return(
+                                        <div key={`exp-${id}`} className={`experience-container`}>
+                                            <div>
+                                                <h4>{title}</h4>
+                                                <p><span>At {location} - {company}</span></p>
+                                                <p><span>{time_start}</span>{time_end ? `- ${time_end}`:''}</p>
+                                            </div>
+                                            <div>
+                                                <p className={`longText`}>{description}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+
+                            </div>
+
+                            <div className={`secondSectionContainer paddingTop4`} id={`contact`}>
+                                <h3>Contact Me</h3>
+                                <form onSubmit={this.onSubmit} className={`form-body`}>
+                                    <div className="half-form">
+                                        <input
+                                            className="form-control"
+                                            type="text"
+                                            name="name"
+                                            placeholder={"Your Full Name*"}
+                                            // onChange={this.onChange}
+                                            // value={name}
+                                        />
+                                    </div>
+                                    <div className="half-form">
+                                        <input
+                                            className="form-control"
+                                            type="email"
+                                            name="email"
+                                            placeholder={"Your Email"}
+                                            onChange={this.onChange}
+                                            // value={email}
+                                        />
+                                    </div>
+                                    <div className="full-form">
+                                        <input
+                                            className="form-control"
+                                            type="text"
+                                            name="subject"
+                                            placeholder={"Subject"}
+                                            onChange={this.onChange}
+                                            // value={subject}
+                                        />
+                                    </div>
+                                    <div className="full-form">
+                                        {/*<label>Message</label>*/}
+                                        <textarea
+                                            className="form-control"
+                                            type="text"
+                                            name="message"
+                                            placeholder={"Your Message*"}
+                                            onChange={this.onChange}
+                                            // value={message}
+                                        />
+                                    </div>
+                                    <div className="full-form submit-button">
+                                        <button type="submit" className="button">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
 
+                    </div>
+                    <div className="footer">
+                        <div className="topnav-right">
+                            <a href={pageContent.linkedin} target={`_blank`}><i className="fab fa-linkedin-in"></i></a>
+                            <a href={pageContent.facebook} target={`_blank`}><i className="fab fa-facebook-f"></i></a>
+                            <a href={pageContent.git} target={`_blank`}><i className="fab fa-github"></i></a>
+                        </div>
                     </div>
 
                 </Fragment>

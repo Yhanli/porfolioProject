@@ -8,6 +8,9 @@
   margin-bottom: 4rem;
 }
 
+.paddingTop4{
+  padding-top: 4rem;
+}
 
 .flexBottom{
   align-self: flex-end;
@@ -69,4 +72,107 @@
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+
+.topnav {
+  overflow: hidden;
+  position: fixed;
+  width: 90vw;
+  z-index: 2;
+}
+
+.topnav a {
+  background-color: rgba(255, 255, 255, 0.8);
+
+  float: left;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: rgba(0, 0, 0, 1);
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: #000000;
+}
+
+.topnav-right {
+  float: right;
+  //margin-right: 2rem;
+}
+
+.footer {
+  overflow: hidden;
+  left: 0;
+  bottom: 0;
+  position: relative;
+  width: 100vw;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: auto;
+  padding: 0 5rem;
+}
+.footer a {
+  //background-color: rgba(255, 255, 255, 0.8);
+
+  float: left;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.footer a:hover {
+  background-color: #ddd;
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+
+.form-row{
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px){
+  .form-body .half-form{
+    width: 100%;
+  }
+}
+
+.half-form{
+  width: 48%;
+  margin: 1rem 0;
+  /*background-color: black;*/
+}
+.full-form{
+  width: 100%;
+  margin: 1rem 0;
+}
+.form-control{
+  width: 100%;
+  height: 4rem;
+}
+.form-body{
+  /*background-color: #8bc540;*/
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
+
+}
+.full-form textarea{
+  height: 8rem;
+}
+.submit-button{
+  text-align: right;
 }
