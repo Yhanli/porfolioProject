@@ -90,6 +90,7 @@
   overflow: hidden;
   position: fixed;
   width: 90vw;
+  max-width: 1500px;
   z-index: 2;
 }
 
@@ -130,11 +131,17 @@
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.1);
   margin: auto;
-  padding: 0 5rem;
+
+  .footer-max{
+    margin: auto;
+    width: 100%;
+    max-width: 1600px;
+    padding: 0 3rem 0 5rem;
+
+  }
 }
 .footer a {
   //background-color: rgba(255, 255, 255, 0.8);
-
   float: left;
   color: rgb(0, 0, 0);
   text-align: center;

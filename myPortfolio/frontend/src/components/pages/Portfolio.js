@@ -277,10 +277,12 @@ class Portfolio extends Component {
 
                     </div>
                     <div className="footer">
-                        <div className="topnav-right">
-                            <a href={pageContent.linkedin} target={`_blank`}><i className="fab fa-linkedin-in"></i></a>
-                            <a href={pageContent.facebook} target={`_blank`}><i className="fab fa-facebook-f"></i></a>
-                            <a href={pageContent.git} target={`_blank`}><i className="fab fa-github"></i></a>
+                        <div className={`footer-max`}>
+                            <div className="topnav-right">
+                                <a href={pageContent.linkedin} target={`_blank`}><i className="fab fa-linkedin-in"></i></a>
+                                <a href={pageContent.facebook} target={`_blank`}><i className="fab fa-facebook-f"></i></a>
+                                <a href={pageContent.git} target={`_blank`}><i className="fab fa-github"></i></a>
+                            </div>
                         </div>
                     </div>
 
