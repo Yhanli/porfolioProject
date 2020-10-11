@@ -43,7 +43,7 @@ class Portfolio extends Component {
     };
 
     previewText = (string) => {
-        const max_length = 240;
+        const max_length = 220;
         if (string.length > max_length){
             return string.substring(0,max_length) + "...";
         }
@@ -82,7 +82,10 @@ class Portfolio extends Component {
         const zoomOutProperties = {
             indicator:true,
             sacale: 0.4,
-            indicators: i => (<div className="indicator">{i + 1}</div>)
+            duration: 4000,
+            indicators: i => (<div className="indicator">{i + 1}</div>),
+            // prevArrow: <div style={{width: "40px", marginRight: "-40px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M242 180.6v-138L0 256l242 213.4V331.2h270V180.6z"/></svg></div>,
+            // nextArrow: <div style={{width: "40px", marginLeft: "-40px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M512 256L270 42.6v138.2H0v150.6h270v138z"/></svg></div>
         };
         const {loading, pageContent, portfolios} = this.state;
         const ready = (!loading && portfolios !== null && pageContent !== null);
@@ -111,7 +114,8 @@ class Portfolio extends Component {
 
                             <div className={`secondSectionContainer`}>
                                 {portfolios.map(portfolio => {
-                                    const {id, title, description, project_startdate, project_enddate, direct_url, project_image} = portfolio;
+                                    const {id, title, description, project_startdate, project_enddate, direct_url,
+                                        project_image, source_code_url} = portfolio;
                                     return (
                                         <div key={`post-${id}`} >
                                             <div className={`modal-bg`} id={`post-modal-${id}`}
@@ -120,15 +124,39 @@ class Portfolio extends Component {
                                             </div>
                                             <div className={`modal-bg-content`} id={`post-modal-${id}-content`}>
                                                 <div className={`modal-content`}>
+                                                    <div>
+                                                        <h2 className={`mainTitleStyle`}>{title}</h2>
+                                                        <p className={`mainDateStyle marginBelow2`}>{this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>
+                                                    </div>
                                                     <div className={`modal-image-slide`}>
                                                         <Zoom {...zoomOutProperties}>
                                                             {project_image.map(
-                                                                image => <img key={image.id} style={{width: "100%"}} src={image.picture}/>
+                                                                image =>
+                                                                    <a href={image.picture_direct} target="_blank" style={{width: "100%",
+                                                                        maxHeight:'550px'
+                                                                    }}>
+                                                                    <img key={image.id} className={`modal-image`}
+                                                                         title={image.picture_direct ? `${image.picture_alt}` : ''}
+                                                                          src={image.picture}
+                                                                    /></a>
                                                             )}
                                                         </Zoom>
                                                     </div>
                                                     <div>
-                                                        <p>this is gonna be contents</p>
+                                                        <h4 className={`mainTitleStyle marginBelow1`}>Description</h4>
+                                                        <p className={`mainTextStyle longText marginBelow2`}>{description}</p>
+                                                    </div>
+                                                    <div className={`mainTextStyle`}>
+                                                        {  source_code_url? <a className="button"
+                                                            href={source_code_url} target="_blank"
+                                                            ><span>Open Code</span></a>
+                                                            : ""
+                                                        }
+                                                        {  direct_url? <a className="button"
+                                                                               href={direct_url} target="_blank"
+                                                            ><span>Open Project</span></a>
+                                                            : ""
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,10 +164,13 @@ class Portfolio extends Component {
                                             <div  className={`projectPreContainer `} onClick={this.showModalAction.bind(this, id)}
 
                                             >
-                                                    <h2 className={`marginBelow2`}>{title}</h2>
+                                                    <h2 className={`marginBelow2`}>
+                                                        <i className="fa fa-book"></i>
+                                                        &nbsp;
+                                                        {title}</h2>
                                                     <p>{this.previewText(description)}</p>
                                                     {/*<p>{direct_url}</p>*/}
-                                                    <div className={`marginBelow1`}>{project_image.slice(0,4).map(image => {
+                                                    <div className={`marginBelow1 previewImageContainer`}>{project_image.slice(0,4).map(image => {
                                                         const {picture} = image;
                                                         return(
                                                             <img className={`previewImage`} src={picture}/>

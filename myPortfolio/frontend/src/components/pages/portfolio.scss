@@ -2,39 +2,6 @@
 $image_gradient_color: rgb(232, 246, 248);
 $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
 
-//.frontContainer{
-//  width: 100vw;
-//  //height: 100vh;
-//  overflow: hidden;
-//
-//  @media screen and (max-aspect-ratio: 17/10){
-//    .frontContainer{
-//      width: 100vw;
-//      height: auto;
-//
-//    }
-//  }
-//
-//  .imgBgContainer{
-//    //background-color: #b7b5b5;
-//    .imgBg{
-//      z-index: -1;
-//      position: absolute;
-//      width: 100vw;
-//      //transition: all 0.3s ease-in-out!important;
-//
-//    }
-//  }
-//  .gradientBg{
-//    position: absolute;
-//    height: 100%;
-//    width: 100%;
-//    //background-color: $image_gradient_color;
-//    background: $image_gradient_color;
-//    background: linear-gradient(0deg, $image_gradient_color 0%, rgba(255,255,255,0) 100%);
-//  }
-//}
-
 .bgBlueWhite{
   background-color: $image_gradient_color;
 }
@@ -89,7 +56,6 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: center;
-    cursor: pointer;
 
     .projectPreContainer{
       display: flex;
@@ -100,15 +66,20 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
       min-width: 430px;
       max-width: 500px;
       width: 95vw;
-      height: 300px;
       background-color: $portfolioPreviewBoxColor;
       transition: all 0.3s ease-in-out!important;
+      cursor: pointer;
 
-      .previewImage{
-        max-height: 70px;
-        margin-right: 0.5rem;
-        border-radius: 5px;
+      .previewImageContainer{
+        height: 71px;
+        overflow: hidden;
+        .previewImage{
+          max-height: 70px;
+          margin-right: 0.5rem;
+          border-radius: 5px;
+        }
       }
+
 
       p{
         margin-bottom: 1rem;

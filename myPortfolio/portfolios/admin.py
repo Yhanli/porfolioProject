@@ -5,7 +5,7 @@ from .models import Portfolios, ProjectPictures
 # Register your models here.
 class ProjectPicturesInline(admin.TabularInline):
     model = ProjectPictures
-    fields = ['picture']
+    fields = ['picture', 'picture_direct', 'picture_alt']
 
 
 class PageAdmin(admin.ModelAdmin):

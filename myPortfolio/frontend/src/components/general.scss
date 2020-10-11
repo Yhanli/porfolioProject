@@ -12,3 +12,61 @@
 .flexBottom{
   align-self: flex-end;
 }
+
+.mainTitleStyle{
+  margin-left: 2rem;
+}
+
+.mainTextStyle{
+  margin-left: 1.5rem;
+  margin-top: 1rem;;
+  color: rgba(0, 0, 0, 0.76);
+}
+
+.mainDateStyle{
+  margin-left: 2rem;
+}
+
+.longText{
+  white-space: pre-wrap;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #00a7f4;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.7rem;
+  padding: 10px;
+  //width: px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
