@@ -100,11 +100,14 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
 }
 
 
-@media screen and (max-width: 760px){
+@media screen and (max-width: 990px){
   .mainSectionContainer .topSection .twoCol{
     max-width: 100%;
     text-align: center;
   }
+  .mainSectionContainer .secondSectionContainer .projectPreContainer {
+      max-width: 100%;
+    }
 }
 
 .indicator {

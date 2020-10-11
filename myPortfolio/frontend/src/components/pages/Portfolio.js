@@ -170,7 +170,7 @@ class Portfolio extends Component {
                                                         {title}</h2>
                                                     <p>{this.previewText(description)}</p>
                                                     {/*<p>{direct_url}</p>*/}
-                                                    <div className={`marginBelow1 previewImageContainer`}>{project_image.slice(0,4).map(image => {
+                                                    <div className={`marginBelow1 previewImageContainer`}>{project_image.slice(0,20).map(image => {
                                                         const {picture} = image;
                                                         return(
                                                             <img className={`previewImage`} src={picture}/>
