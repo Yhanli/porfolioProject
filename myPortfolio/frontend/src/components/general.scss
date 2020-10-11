@@ -92,7 +92,15 @@
   width: 90vw;
   max-width: 1500px;
   z-index: 2;
+
+  .nav-logo{
+    margin-top: 1rem;
+    width: 70px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+  }
 }
+
 
 .topnav a {
   background-color: rgba(255, 255, 255, 0.8);

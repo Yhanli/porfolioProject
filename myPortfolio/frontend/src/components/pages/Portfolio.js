@@ -137,6 +137,9 @@ class Portfolio extends Component {
         if (ready){
             return (
                 <Fragment>
+                    <script>
+                        {document.getElementById("favicon").href = pageContent.favicon}
+                    </script>
                     <div className={`bgBlueWhite`}>
                         <div className="container defaultFont">
                             {/*<div className={`frontContainer`}>*/}
@@ -145,6 +148,7 @@ class Portfolio extends Component {
                             {/*    </div>*/}
                             {/*</div>*/}
                             <div className="topnav" id={`navbar`}>
+                                <img className={`nav-logo`} src={pageContent.favicon}/>
                                 <div className="topnav-right">
                                     <a href="#top">Portfolio</a>
                                     <a href="#projects">My Projects</a>
