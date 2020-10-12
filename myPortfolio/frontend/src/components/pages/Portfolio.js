@@ -167,6 +167,10 @@ class Portfolio extends Component {
                                         <h1 className={`marginBelow1`}>{pageContent.portfolio.name}</h1>
                                         <h2 className={`marginBelow1`}>{pageContent.portfolio.page_title}</h2>
                                         <p className={`marginBelow1 longText`}>{pageContent.portfolio.description}</p>
+
+                                        <a className="button"
+                                           href={pageContent.portfolio.my_resume} target="_blank"
+                                        ><span>View Resume</span></a>
                                     </div>
                                 </div>
 
@@ -318,15 +322,15 @@ class Portfolio extends Component {
                                 <div className="topnav-right">
                                     { pageContent.linkedin ?
                                         <a href={pageContent.linkedin} target={`_blank`}>
-                                        <i className="fab fa-linkedin-in"></i></a> : ""
+                                        <i className="fab fa-linkedin-in fa-2x"></i></a> : ""
                                     }
                                     { pageContent.facebook ?
                                     <a href={pageContent.facebook} target={`_blank`}>
-                                        <i className="fab fa-facebook-f"></i></a> : ""
+                                        <i className="fab fa-facebook-f fa-2x"></i></a> : ""
                                     }
                                     { pageContent.git ?
                                     <a href={pageContent.git} target={`_blank`}>
-                                        <i className="fab fa-github"></i></a> : ""
+                                        <i className="fab fa-github fa-2x"></i></a> : ""
                                     }
                                 </div>
                             </div>
