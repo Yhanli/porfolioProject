@@ -9,6 +9,10 @@ import "../modules/modal.css"
 
 import 'react-slideshow-image/dist/styles.css'
 
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.withCredentials = true;
+
 class Portfolio extends Component {
 
     constructor(props){
@@ -96,6 +100,7 @@ class Portfolio extends Component {
             subject,
             sendto
         }
+        this.props.alert.show("Sending email to Yuhan ",{type: "info"});
         axios.post("/api/webpages/", query)
             .then(res => {
                 console.log(res.status);

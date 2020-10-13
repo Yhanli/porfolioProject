@@ -6,6 +6,8 @@ from rest_framework.response import Response
 import smtplib, ssl
 from django.conf import settings
 
+
+
 class WebPagesViewSet(viewsets.ViewSet):
     permission_classes = [
         permissions.AllowAny
