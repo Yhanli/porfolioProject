@@ -184,7 +184,7 @@ class Portfolio extends Component {
                                     </div>
                                     <div className={`twoCol`}>
                                         <h1 className={`marginBelow1`}>{pageContent.portfolio.name}</h1>
-                                        <h2 className={`marginBelow1`}>{pageContent.portfolio.page_title}</h2>
+                                        <h3 className={`marginBelow1`}>{pageContent.portfolio.page_title}</h3>
                                         <p className={`marginBelow1 longText`}>{pageContent.portfolio.description}</p>
 
                                         <a className="button"
