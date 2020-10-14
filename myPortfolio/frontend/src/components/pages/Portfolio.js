@@ -164,15 +164,17 @@ class Portfolio extends Component {
                         backgroundImage:`url(${pageContent.portfolio.back_image})`
                     }}>
                         <div className="container defaultFont">
-                            <div className="topnav" id={`navbar`}>
-                                {/*<a href="#top"><img className={`nav-logo`} src={pageContent.favicon} href="#top"/></a>*/}
-                                <div className="topnav-right">
-                                    <a href="#top">Portfolio</a>
-                                    <a href="#projects">Projects</a>
-                                    <a href="#experience">Experiences</a>
-                                    <a href="#contact">Contact</a>
+                            {this.state.showModal ? "" :
+                                <div className="topnav" id={`navbar`}>
+                                    {/*<a href="#top"><img className={`nav-logo`} src={pageContent.favicon} href="#top"/></a>*/}
+                                    <div className="topnav-right">
+                                        <a href="#top">Portfolio</a>
+                                        <a href="#projects">Projects</a>
+                                        <a href="#experience">Experiences</a>
+                                        <a href="#contact">Contact</a>
+                                    </div>
                                 </div>
-                            </div>
+                            }
 
                             <div className={`mainSectionContainer`} id={`top`} value={pageContent? document.title = `My Portfolio` : ''}>
 
