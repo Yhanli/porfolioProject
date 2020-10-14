@@ -55,6 +55,24 @@ class Portfolio extends Component {
     cleanseDate = (string) => {
         return string.split("T")[0];
     };
+    DateMonthYear = (string)=>{
+        const months = {
+            0: 'January',
+            1: 'February',
+            2: 'March',
+            3: 'April',
+            4: 'May',
+            5: 'June',
+            6: 'July',
+            7: 'August',
+            8: 'September',
+            9: 'October',
+            10: 'November',
+            11: 'December'
+        };
+        const parsed_date = new Date(string);
+        return `${months[parsed_date.getMonth()]} ${parsed_date.getFullYear()}`;
+    };
 
     previewText = (string) => {
         const max_length = 220;
@@ -70,17 +88,14 @@ class Portfolio extends Component {
         const element = document.getElementById(`post-modal-${id}`);
         const element_content = document.getElementById(`post-modal-${id}-content`);
         const main_html = document.body;
-        const navbar = document.getElementById(`navbar`);
 
         if (!this.state.showModal) {
-            navbar.classList.add('notActive')
             element_content.classList.add("modal-active-content");
             element.classList.add("modal-active");
             main_html.classList.add('main-stop-scroll');
         }
 
         else {
-            navbar.classList.remove('notActive')
             element_content.classList.remove("modal-active-content");
             element.classList.remove("modal-active");
             main_html.classList.remove('main-stop-scroll');
@@ -145,19 +160,16 @@ class Portfolio extends Component {
                     <script>
                         {document.getElementById("favicon").href = pageContent.favicon}
                     </script>
-                    <div className={`bgBlueWhite`}>
+                    <div className={`bgBlueWhite`} style={{
+                        backgroundImage:`url(${pageContent.portfolio.back_image})`
+                    }}>
                         <div className="container defaultFont">
-                            {/*<div className={`frontContainer`}>*/}
-                            {/*    <div className={`gradientBg`}></div>*/}
-                            {/*    <div className={`imgBgContainer`}>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
                             <div className="topnav" id={`navbar`}>
-                                <a href="#top"><img className={`nav-logo`} src={pageContent.favicon} href="#top"/></a>
+                                {/*<a href="#top"><img className={`nav-logo`} src={pageContent.favicon} href="#top"/></a>*/}
                                 <div className="topnav-right">
                                     <a href="#top">Portfolio</a>
-                                    <a href="#projects">My Projects</a>
-                                    <a href="#experience">My Experiences</a>
+                                    <a href="#projects">Projects</a>
+                                    <a href="#experience">Experiences</a>
                                     <a href="#contact">Contact</a>
                                 </div>
                             </div>
@@ -178,8 +190,10 @@ class Portfolio extends Component {
                                         ><span>View Resume</span></a>
                                     </div>
                                 </div>
-
-                                <div className={`secondSectionContainer paddingTop5`} id={`projects`}>
+                                <div className={`paddingTop5 marginBelow2 subHeadingStyle`}  id={`projects`}>
+                                    <h1>My Projects</h1>
+                                </div>
+                                <div className={`secondSectionContainer`}>
                                     {portfolios.map(portfolio => {
                                         const {id, title, description, project_startdate, project_enddate, direct_url,
                                             project_image, source_code_url} = portfolio;
@@ -248,15 +262,17 @@ class Portfolio extends Component {
                                         )
                                     })}
                                 </div>
-
-                                <div className={`secondSectionContainer paddingTop5`} id={`experience`}>
+                                <div className={`paddingTop5 marginBelow2 subHeadingStyle`} id={`experience`}>
+                                    <h1>My Experiences</h1>
+                                </div>
+                                <div className={`secondSectionContainer`} >
                                     {pageContent.experiences.map(experience => {
                                         const {id, title, company, location, time_start, time_end, description} = experience;
                                         return(
                                             <div key={`exp-${id}`} className={`experience-container marginBelow4`}>
                                                 <div style={{marginBottom:'1rem', paddingRight:'1rem'}}>
                                                     <h4 className={`marginBelow1`}>{title}</h4>
-                                                    <p><span>{time_start}</span>{time_end ? ` - ${time_end}`:' - Current'}</p>
+                                                    <p><span>{this.DateMonthYear(time_start)}</span>{time_end ? ` - ${this.DateMonthYear(time_end)}`:' - Current'}</p>
                                                     <p><span>At {location} - {company}</span></p>
                                                 </div>
                                                 <div>
@@ -267,16 +283,17 @@ class Portfolio extends Component {
                                     })}
 
                                 </div>
-
-                                <div className={`secondSectionContainer paddingTop4`} id={`contact`}>
-                                    <h3>Contact Me</h3>
+                                <div className={`paddingTop5 marginBelow2 subHeadingStyle`}  id={`projects`}>
+                                    <h1>Contact Me</h1>
+                                </div>
+                                <div className={`secondSectionContainer leftrightMargin`} id={`contact`}>
                                     <form onSubmit={this.onSubmit} className={`form-body`}>
                                         <div className="half-form">
                                             <input
                                                 className="form-control"
                                                 type="text"
                                                 name="name"
-                                                placeholder={"Your Full Name*"}
+                                                placeholder={"Your Full Name"}
                                                 onChange={this.onChange}
                                                 value={name}
                                             />
@@ -302,12 +319,11 @@ class Portfolio extends Component {
                                             />
                                         </div>
                                         <div className="full-form">
-                                            {/*<label>Message</label>*/}
                                             <textarea
                                                 className="form-control"
                                                 type="text"
                                                 name="message"
-                                                placeholder={"Your Message*"}
+                                                placeholder={"Your Message"}
                                                 onChange={this.onChange}
                                                 value={message}
                                             />

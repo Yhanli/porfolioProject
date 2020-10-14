@@ -1,16 +1,20 @@
-
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 //$image_gradient_color: rgb(232, 246, 248);
 $image_gradient_color: rgb(255, 255, 255);
 
-$portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
+$portfolioPreviewBoxColor: rgba(253, 227, 82, 0.42);
 
 .bgBlueWhite{
-  background-image: url("/media/webpages/portfolio/bg_yuhan.jpg");
+  //background-image: url("/media/webpages/portfolio/bg_yuhan.jpg");
   background-repeat: repeat;
   //background-color: $image_gradient_color;
 }
 .defaultFont{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Georgia;
   color: rgba(0,0,0,0.8);
 
   *p{
@@ -25,8 +29,8 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
   min-height: 100vh;
   z-index: 0;
   padding: 0 1rem;
-  background-image: url("/media/webpages/portfolio/bg_yuhan.jpg");
   background-repeat: repeat-y;
+  box-sizing: border-box;
 }
 .mainSectionContainer {
   position: relative;
@@ -47,7 +51,7 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
     width: inherit;
 
     .twoCol{
-      padding: 0 2rem;
+      padding: 0 1rem;
       max-width: 49%;
       transition: all 0.1s ease-in-out!important;
       img{
@@ -82,11 +86,11 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
       border-radius: 10px;
       padding: 1rem;
       margin-bottom: 2rem;
-      min-width: 430px;
+      min-width: 350px;
       max-width: 500px;
-      width: 95vw;
+      width: 90vw;
       background-color: $portfolioPreviewBoxColor;
-      transition: all 0.2s ease-in-out!important;
+      transition: all 0.1s ease-in-out!important;
       cursor: pointer;
 
       .previewImageContainer{
@@ -108,7 +112,7 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
       &:hover{
         position: relative;
         box-shadow: 5px 10px rgba(96, 96, 96, 0.15);
-        transform: translateX(-2px) translateY(-2px);
+        transform: translateX(-2px) translateY(-10px);
       }
     }
   }
@@ -117,6 +121,9 @@ $portfolioPreviewBoxColor: rgba(94, 73, 194, 0.1);
 @media screen and (max-width: 1530px){
   .mainSectionContainer .secondSectionContainer .experience-container div{
     max-width: 1600px;
+  }
+  .mainSectionContainer .secondSectionContainer .projectPreContainer {
+    max-width: 45vw;
   }
 }
 
