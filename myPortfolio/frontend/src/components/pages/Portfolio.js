@@ -6,6 +6,7 @@ import {withAlert} from "react-alert";
 import "./portfolio.scss"
 import "./../general.scss"
 import "../modules/modal.css"
+import "./../ckeditor.scss"
 
 import 'react-slideshow-image/dist/styles.css'
 
@@ -197,7 +198,7 @@ class Portfolio extends Component {
                                 </div>
                                 <div className={`secondSectionContainer`}>
                                     {portfolios.map(portfolio => {
-                                        const {id, title, description, project_startdate, project_enddate, direct_url,
+                                        const {id, title, description, styled_description, project_startdate, project_enddate, direct_url,
                                             project_image, source_code_url} = portfolio;
                                         return (
                                             <div key={`post-${id}`} >
@@ -226,8 +227,11 @@ class Portfolio extends Component {
                                                             <p className={`mainDateStyle marginBelow2`}>{this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>
                                                         </div>
                                                         <div>
-                                                            <h4 className={`mainSubTitleStyle marginBelow1`}>Description</h4>
-                                                            <p className={`mainTextStyle longText marginBelow2`}>{description}</p>
+                                                            {/*<h4 className={`mainSubTitleStyle marginBelow1`}>Description</h4>*/}
+                                                            {/*<p className={`mainTextStyle longText marginBelow2`}>{description}</p>*/}
+                                                            <div className={`ck-content`} style={{width: "100%"}}>
+                                                                <div className={`note-content`} dangerouslySetInnerHTML={{__html: styled_description}}></div>
+                                                            </div>
                                                         </div>
                                                         <div className={`mainTextStyle`}>
                                                             {  source_code_url? <a className="button"

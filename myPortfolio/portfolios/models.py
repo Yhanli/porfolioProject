@@ -1,11 +1,12 @@
 from django.db import models
-
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
 class Portfolios(models.Model):
     title = models.CharField(max_length=1000, blank=True)
     description = models.TextField(blank=True)
+    styled_description = RichTextField(blank=True, null=True)
 
     project_startdate = models.DateTimeField(blank=True)
     project_enddate = models.DateTimeField(blank=True)

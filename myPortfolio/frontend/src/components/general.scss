@@ -235,3 +235,14 @@
 .submit-button{
   text-align: right;
 }
+
+.note-content
+{
+  width: 100%;
+  padding: 0 2rem;
+  margin: auto;
+  img, iframe {
+    max-width: 100%;
+    height: auto !important;
+  }
+}

@@ -42,12 +42,22 @@ INSTALLED_APPS = [
     'knox',
     'nested_admin',
 
+    'ckeditor',
+
     'frontend',
     'webPages',
     'portfolios'
 
 
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None, #You can change this based on your requirements.
+        'width': 'auto',
+
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -12,6 +12,7 @@ djangorestframework = "*"
 pillow = "*"
 django-nested-admin = "*"
 gunicorn = "*"
+django-ckeditor = "*"
 
 [requires]
 python_version = "3.7"
