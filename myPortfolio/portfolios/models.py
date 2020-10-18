@@ -4,9 +4,9 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Portfolios(models.Model):
+    active = models.BooleanField(default=False)
     title = models.CharField(max_length=1000, blank=True)
-    description = models.TextField(blank=True)
-    styled_description = RichTextField(blank=True, null=True)
+    sort_rank = models.IntegerField(default=100)
 
     project_startdate = models.DateTimeField(blank=True)
     project_enddate = models.DateTimeField(blank=True)
@@ -17,6 +17,8 @@ class Portfolios(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     project_hours = models.IntegerField(blank=True)
+    description = models.TextField(blank=True)
+    styled_description = RichTextField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Portfolio"
