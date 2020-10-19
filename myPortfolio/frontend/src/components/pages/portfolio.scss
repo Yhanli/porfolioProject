@@ -6,7 +6,8 @@
 //$image_gradient_color: rgb(232, 246, 248);
 $image_gradient_color: rgb(255, 255, 255);
 
-$portfolioPreviewBoxColor: rgba(253, 227, 82, 0.42);
+$portfolioPreviewBoxColor: rgba(253, 227, 82, 0.18);
+$navFooterHoverColor: rgba(255, 240, 165, 0.92);
 
 .bgBlueWhite{
   //background-image: url("/media/webpages/portfolio/bg_yuhan.jpg");
@@ -90,7 +91,7 @@ $portfolioPreviewBoxColor: rgba(253, 227, 82, 0.42);
       max-width: 500px;
       width: 90vw;
       background-color: $portfolioPreviewBoxColor;
-      transition: all 0.1s ease-in-out!important;
+      transition: all 0.3s ease-in-out!important;
       cursor: pointer;
 
       .previewImageContainer{
@@ -149,3 +150,82 @@ $portfolioPreviewBoxColor: rgba(253, 227, 82, 0.42);
   background: #666;
 }
 
+
+.topnav {
+  overflow: hidden;
+  position: fixed;
+  width: 83vw;
+  max-width: 1500px;
+  z-index: 2;
+
+  .nav-logo{
+    margin-top: 5px;
+    width: 70px;
+    background-color: rgba(204, 204, 204, 0.85);
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+}
+
+
+.topnav .topnav-right a {
+  background-color: rgba(255, 255, 255, 0.95);
+  float: left;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 40px 10px 10px 10px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  //font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.topnav .topnav-right a:hover {
+  background-color: $navFooterHoverColor;
+  color: rgba(0, 0, 0, 1);
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: #000000;
+}
+
+.topnav-right {
+  float: right;
+  //margin-right: 2rem;
+}
+
+.footer {
+  overflow: hidden;
+  left: 0;
+  bottom: 0;
+  position: relative;
+  width: 100vw;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: auto;
+
+  .footer-max{
+    margin: auto;
+    width: 100%;
+    max-width: 1600px;
+    padding: 0 3vw 0 5rem;
+  }
+}
+.footer a {
+  //background-color: rgba(255, 255, 255, 0.8);
+  float: left;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.footer a:hover {
+  background-color: $navFooterHoverColor;
+  color: rgba(0, 0, 0, 1);
+}

@@ -108,13 +108,17 @@ class Portfolio extends Component {
 
     onSubmit = e =>{
         e.preventDefault();
-        const {name, email, subject, message, sendto} = this.state
+        const {name, email, subject, message, sendto} = this.state;
         const query = {
             name,
             email,
             message,
             subject,
             sendto
+        };
+        if (name==='' || email===''){
+            this.props.alert.show("Please provide more details",{type: "error"});
+            return;
         }
         this.props.alert.show("Sending email to Yuhan ",{type: "info"});
         axios.post("/api/webpages/", query)
@@ -165,7 +169,7 @@ class Portfolio extends Component {
                         backgroundImage:`url(${pageContent.portfolio.back_image})`
                     }}>
                         <div className="container defaultFont">
-                            {this.state.showModal ? "" :
+                            {/*{this.state.showModal ? "" :*/}
                                 <div className="topnav" id={`navbar`}>
                                     {/*<a href="#top"><img className={`nav-logo`} src={pageContent.favicon} href="#top"/></a>*/}
                                     <div className="topnav-right">
@@ -175,7 +179,7 @@ class Portfolio extends Component {
                                         <a href="#contact">Contact</a>
                                     </div>
                                 </div>
-                            }
+                            {/*}*/}
 
                             <div className={`mainSectionContainer`} id={`top`} value={pageContent? document.title = `My Portfolio` : ''}>
 
@@ -203,8 +207,7 @@ class Portfolio extends Component {
                                         return (
                                             <div key={`post-${id}`} >
                                                 <div className={`modal-bg`} id={`post-modal-${id}`}
-                                                     onClick={this.showModalAction.bind(this, id)}
-                                                >
+                                                     onClick={this.showModalAction.bind(this, id)}>
                                                 </div>
                                                 <div className={`modal-bg-content`} id={`post-modal-${id}-content`}>
                                                     <div className={`modal-content`}>
