@@ -76,7 +76,7 @@ $navFooterHoverColor: rgba(255, 240, 165, 0.92);
       flex-wrap: wrap;
 
       div{
-        min-width: 300px;
+        min-width: 350px;
         max-width: 1100px;
       }
     }
@@ -154,9 +154,10 @@ $navFooterHoverColor: rgba(255, 240, 165, 0.92);
 .topnav {
   overflow: hidden;
   position: fixed;
-  width: 83vw;
+  width: 85vw;
   max-width: 1500px;
   z-index: 2;
+  word-wrap: unset;
 
   .nav-logo{
     margin-top: 5px;

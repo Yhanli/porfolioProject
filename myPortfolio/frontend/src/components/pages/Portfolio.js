@@ -173,7 +173,7 @@ class Portfolio extends Component {
                                 <div className="topnav" id={`navbar`}>
                                     {/*<a href="#top"><img className={`nav-logo`} src={pageContent.favicon} href="#top"/></a>*/}
                                     <div className="topnav-right">
-                                        <a href="#top">Portfolio</a>
+                                        <a href="#top">Home</a>
                                         <a href="#projects">Projects</a>
                                         <a href="#experience">Experiences</a>
                                         <a href="#contact">Contact</a>
