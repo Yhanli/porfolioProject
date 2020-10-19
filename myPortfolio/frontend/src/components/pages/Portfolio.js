@@ -169,7 +169,7 @@ class Portfolio extends Component {
                         backgroundImage:`url(${pageContent.portfolio.back_image})`
                     }}>
                         <div className="container defaultFont">
-                            {/*{this.state.showModal ? "" :*/}
+                            {this.state.showModal ? "" :
                                 <div className="topnav" id={`navbar`}>
                                     {/*<a href="#top"><img className={`nav-logo`} src={pageContent.favicon} href="#top"/></a>*/}
                                     <div className="topnav-right">
@@ -179,7 +179,7 @@ class Portfolio extends Component {
                                         <a href="#contact">Contact</a>
                                     </div>
                                 </div>
-                            {/*}*/}
+                            }
 
                             <div className={`mainSectionContainer`} id={`top`} value={pageContent? document.title = `My Portfolio` : ''}>
 
