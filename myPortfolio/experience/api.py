@@ -29,6 +29,8 @@ class ExperienceViewSet(viewsets.ModelViewSet):
                 end_time = datetime.strptime(exp['time_end'], '%Y-%m-%d').strftime('%b %Y')
             except:
                 end_time = "CURRENT"
+            if end_time == None:
+                end_time = "CURRENT"
 
             if year not in result_.keys():
                 result_[year] = []
