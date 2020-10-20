@@ -7,6 +7,7 @@ import "./portfolio.scss"
 import "./../general.scss"
 import "../modules/modal.css"
 import "./../ckeditor.scss"
+import "./timeline.scss"
 
 import 'react-slideshow-image/dist/styles.css'
 
@@ -22,6 +23,7 @@ class Portfolio extends Component {
             loading: true,
             pageContent:null,
             portfolios: null,
+            experiences:null,
             showModal: false,
             name:"",
             email:"",
@@ -50,6 +52,11 @@ class Portfolio extends Component {
         axios.get('/api/portfolios/').then(res=>{
             const portfolios = res.data;
             this.setState({loading: false, portfolios:portfolios})
+        });
+        axios.get('/api/experience/').then(res=>{
+            const experiences = res.data;
+            this.setState({loading: false, experiences:experiences});
+            console.log(experiences);
         })
     };
 
@@ -156,7 +163,7 @@ class Portfolio extends Component {
             // prevArrow: <div style={{width: "40px", marginRight: "-40px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M242 180.6v-138L0 256l242 213.4V331.2h270V180.6z"/></svg></div>,
             // nextArrow: <div style={{width: "40px", marginLeft: "-40px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M512 256L270 42.6v138.2H0v150.6h270v138z"/></svg></div>
         };
-        const {loading, pageContent, portfolios} = this.state;
+        const {loading, pageContent, portfolios, experiences} = this.state;
         const {name, email, subject, message} = this.state
         const ready = (!loading && portfolios !== null && pageContent !== null);
         if (ready){
@@ -275,22 +282,44 @@ class Portfolio extends Component {
                                     <h1>My Experiences</h1>
                                 </div>
                                 <div className={`secondSectionContainer`} >
-                                    {pageContent.experiences.map(experience => {
-                                        const {id, title, company, location, time_start, time_end, description} = experience;
-                                        return(
-                                            <div key={`exp-${id}`} className={`experience-container marginBelow4`}>
-                                                <div style={{marginBottom:'1rem', paddingRight:'1rem'}}>
-                                                    <h4 className={`marginBelow1`}>{title}</h4>
-                                                    <p><span>{this.DateMonthYear(time_start)}</span>{time_end ? ` - ${this.DateMonthYear(time_end)}`:' - Current'}</p>
-                                                    <p><span>At {location} - {company}</span></p>
-                                                </div>
-                                                <div>
-                                                    <p className={`longText`}>{description}</p>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
+                                    <div>
+                                        <div className="page">
+                                            <div className="timeline">
 
+                                                {experiences.map(item=>{
+                                                    const {year, experience} = item;
+                                                    return (
+                                                        <div className="timeline__group" key={`year-${year}`}>
+                                                            <span className="timeline__year time" aria-hidden="true">{year}</span>
+                                                            <div className="timeline__cards">
+                                                                {
+                                                                    experience.map(indi_exp=>{
+                                                                        const {id,title, company,location,time_start,time_end,description,month,day} = indi_exp;
+                                                                        return(
+                                                                            <div className="timeline__card card" key={`exp-card-${id}`}>
+                                                                                <header className="card__header">
+                                                                                    <time className="time" dateTime={time_start}>
+                                                                                        <span className="time__month">{month}</span>
+                                                                                    </time>
+                                                                                    <h3 className="card__title r-title">{title}</h3>
+                                                                                    <div className="card__content">At {company} - {location}</div>
+
+                                                                                </header>
+                                                                                <div className="card__content">
+                                                                                    <p>{description}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        );
+                                                                    })
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                                 <div className={`paddingTop5 marginBelow2 subHeadingStyle`}  id={`projects`}>
                                     <h1>Contact Me</h1>

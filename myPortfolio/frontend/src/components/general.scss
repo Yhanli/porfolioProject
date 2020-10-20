@@ -1,3 +1,4 @@
+$font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
 .marginBelow1{
   margin-bottom: 1rem;
 }
@@ -58,7 +59,7 @@
 }
 .button {
   border-radius: 4px;
-  background-color: #fdd556;
+  background-color: #ffefa6;
   border: none;
   color: #434343;
   text-align: center;
@@ -133,7 +134,7 @@
   margin: 1rem 0;
 }
 .form-control{
-  font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+  font-family: $font;
   width: 100%;
   height: 3rem;
   border: 2px groove;

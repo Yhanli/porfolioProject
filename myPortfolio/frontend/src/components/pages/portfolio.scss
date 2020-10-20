@@ -6,8 +6,10 @@
 //$image_gradient_color: rgb(232, 246, 248);
 $image_gradient_color: rgb(255, 255, 255);
 
-$portfolioPreviewBoxColor: rgba(253, 227, 82, 0.18);
+$portfolioPreviewBoxColor: rgba(255, 239, 166, 0.8);
 $navFooterHoverColor: rgba(255, 240, 165, 0.92);
+
+$font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
 
 .bgBlueWhite{
   //background-image: url("/media/webpages/portfolio/bg_yuhan.jpg");
@@ -15,7 +17,7 @@ $navFooterHoverColor: rgba(255, 240, 165, 0.92);
   //background-color: $image_gradient_color;
 }
 .defaultFont{
-  font-family: Georgia;
+  font-family: $font;
   color: rgba(0,0,0,0.8);
 
   *p{
