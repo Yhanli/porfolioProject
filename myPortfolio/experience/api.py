@@ -25,19 +25,22 @@ class ExperienceViewSet(viewsets.ModelViewSet):
             year = start_time.year
             month = start_time.strftime('%b')
             day = start_time.strftime('%d')
-            end_time = datetime.strptime(exp['time_end'], '%Y-%m-%d') if exp['time_end'] is not None else "Current"
-            print(end_time, type(end_time))
+            try:
+                end_time = datetime.strptime(exp['time_end'], '%Y-%m-%d').strftime('%b %Y')
+            except:
+                end_time = "CURRENT"
+
             if year not in result_.keys():
                 result_[year] = []
             result_[year] += [
                 {
-                    'id':exp['id'],
+                    'id': exp['id'],
                     'title': exp['title'],
                     'nature': exp['nature'],
                     'company': exp['company'],
                     'location': exp['location'],
                     'time_start': exp['time_start'],
-                    'time_end': end_time.strftime('%b %Y') if type(end_time) is not type('') else end_time,
+                    'time_end': end_time,
                     'description': exp['description'],
                     'year': year,
                     'month': month,
