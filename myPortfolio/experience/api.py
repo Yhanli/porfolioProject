@@ -29,7 +29,7 @@ class ExperienceViewSet(viewsets.ModelViewSet):
                 end_time = datetime.strptime(exp['time_end'], '%Y-%m-%d').strftime('%b %Y')
             except:
                 end_time = "CURRENT"
-            if end_time == None:
+            if len(end_time) < 6:
                 end_time = "CURRENT"
 
             if year not in result_.keys():
