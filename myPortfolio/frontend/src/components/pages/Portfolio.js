@@ -258,10 +258,10 @@ class Portfolio extends Component {
                                                 </div>
 
                                                 <div  className={`projectPreContainer`} onClick={this.showModalAction.bind(this, id)}>
-                                                        <h2 className={`marginBelow2`}>
+                                                        <h3 className={`marginBelow2`}>
                                                             <i className="fa fa-book"></i>
                                                             &nbsp;
-                                                            {title}</h2>
+                                                            {title}</h3>
                                                         <p className={`previewText`}>{this.previewText(description)}</p>
                                                         {/*<p>{direct_url}</p>*/}
                                                         <div className={`marginBelow1 previewImageContainer`}>{project_image.slice(0,20).map(image => {
@@ -271,7 +271,7 @@ class Portfolio extends Component {
                                                             )
                                                             }
                                                         )}</div>
-                                                        <p className={``}>Duration : {this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>
+                                                        {/*<p className={``}>Duration : {this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>*/}
                                                 </div>
                                             </div>
                                         )
