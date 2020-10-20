@@ -56,7 +56,6 @@ class Portfolio extends Component {
         axios.get('/api/experience/').then(res=>{
             const experiences = res.data;
             this.setState({loading: false, experiences:experiences});
-            console.log(experiences);
         })
     };
 
@@ -165,7 +164,7 @@ class Portfolio extends Component {
         };
         const {loading, pageContent, portfolios, experiences} = this.state;
         const {name, email, subject, message} = this.state
-        const ready = (!loading && portfolios !== null && pageContent !== null);
+        const ready = (!loading && portfolios !== null && pageContent !== null && experiences !== null);
         if (ready){
             return (
                 <Fragment>
@@ -263,7 +262,7 @@ class Portfolio extends Component {
                                                             <i className="fa fa-book"></i>
                                                             &nbsp;
                                                             {title}</h2>
-                                                        <p>{this.previewText(description)}</p>
+                                                        <p className={`previewText`}>{this.previewText(description)}</p>
                                                         {/*<p>{direct_url}</p>*/}
                                                         <div className={`marginBelow1 previewImageContainer`}>{project_image.slice(0,20).map(image => {
                                                             const {id,picture} = image;
@@ -286,36 +285,41 @@ class Portfolio extends Component {
                                         <div className="page">
                                             <div className="timeline">
 
-                                                {experiences.map(item=>{
-                                                    const {year, experience} = item;
-                                                    return (
-                                                        <div className="timeline__group" key={`year-${year}`}>
-                                                            <span className="timeline__year time" aria-hidden="true">{year}</span>
-                                                            <div className="timeline__cards">
-                                                                {
-                                                                    experience.map(indi_exp=>{
-                                                                        const {id,title, company,location,time_start,time_end,description,month,day} = indi_exp;
-                                                                        return(
-                                                                            <div className="timeline__card card" key={`exp-card-${id}`}>
-                                                                                <header className="card__header">
-                                                                                    <time className="time" dateTime={time_start}>
-                                                                                        <span className="time__month">{month}</span>
-                                                                                    </time>
-                                                                                    <h3 className="card__title r-title">{title}</h3>
-                                                                                    <div className="card__content">At {company} - {location}</div>
+        {experiences.map(item=>{
+            const {year, experience} = item;
+            return (
+                <div className="timeline__group" key={`year-${year}`}>
+                    <span className="timeline__year time" aria-hidden="true">{year}</span>
+                    <div className="timeline__cards">
+                        {
+                            experience.map(indi_exp=>{
+                                const {id,title,nature,company,location,time_start,
+                                    time_end,description,month,day} = indi_exp;
+                                return(
+                                    <div className="timeline__card card" key={`exp-card-${id}`}>
+                                        <header className="card__header marginBelow1">
+                                            <time className="time" dateTime={time_start}>
+                                                <span className="time__month">{month}</span>
+                                            </time>
+                                            <span>&rarr;</span>
+                                            <time className="time" dateTime={time_end}>
+                                                <span className="time__month">{time_end}</span>
+                                            </time>
+                                            <h3 className="card__title r-title">{title}{nature? <span style={{fontSize: "0.7rem"}}>&nbsp;&nbsp;|{nature}</span>:""}</h3>
+                                            <div className="card__content">At {company} - {location}</div>
 
-                                                                                </header>
-                                                                                <div className="card__content">
-                                                                                    <p>{description}</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        );
-                                                                    })
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                })}
+                                        </header>
+                                        <div className="card__content">
+                                            <p>{description}</p>
+                                        </div>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+                </div>
+            )
+        })}
                                             </div>
                                         </div>
 

@@ -89,6 +89,8 @@ $font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fi
       border-radius: 10px;
       padding: 1rem;
       margin-bottom: 2rem;
+      margin-left: 1px;
+      margin-right: 1px;
       min-width: 350px;
       max-width: 500px;
       width: 90vw;
@@ -109,7 +111,11 @@ $font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fi
 
       p{
         margin-bottom: 1rem;
-        text-align: left;
+        text-align: justify-all;
+      }
+
+      .previewText{
+        min-height: 6rem;
       }
 
       &:hover{
@@ -185,6 +191,7 @@ $font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fi
   font-size: 1.1rem;
   //font-weight: bold;
   transition: all 0.3s ease-in-out;
+  border-radius: 20px;
 }
 
 .topnav .topnav-right a:hover {
