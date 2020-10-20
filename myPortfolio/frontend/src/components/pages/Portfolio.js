@@ -11,6 +11,8 @@ import "./timeline.scss"
 
 import 'react-slideshow-image/dist/styles.css'
 
+import smoothscroll from 'smoothscroll-polyfill';
+
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.withCredentials = true;
@@ -162,6 +164,7 @@ class Portfolio extends Component {
             // prevArrow: <div style={{width: "40px", marginRight: "-40px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M242 180.6v-138L0 256l242 213.4V331.2h270V180.6z"/></svg></div>,
             // nextArrow: <div style={{width: "40px", marginLeft: "-40px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M512 256L270 42.6v138.2H0v150.6h270v138z"/></svg></div>
         };
+        smoothscroll.polyfill();
         const {loading, pageContent, portfolios, experiences} = this.state;
         const {name, email, subject, message} = this.state
         const ready = (!loading && portfolios !== null && pageContent !== null && experiences !== null);
@@ -325,10 +328,10 @@ class Portfolio extends Component {
 
                                     </div>
                                 </div>
-                                <div className={`paddingTop5 marginBelow2 subHeadingStyle`}  id={`projects`}>
+                                <div className={`paddingTop5 marginBelow2 subHeadingStyle`}  id={`contact`}>
                                     <h1>Contact Me</h1>
                                 </div>
-                                <div className={`secondSectionContainer leftrightMargin`} id={`contact`}>
+                                <div className={`secondSectionContainer leftrightMargin`}>
                                     <form onSubmit={this.onSubmit} className={`form-body`}>
                                         <div className="half-form">
                                             <input
