@@ -164,69 +164,70 @@ $font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fi
   background: #666;
 }
 
-
-.topnav {
-  overflow: hidden;
+.navbar{
   position: fixed;
-  width: 85vw;
-  max-width: 1500px;
+  width: 100%;
+  left: 0;
+  top: 0;
   z-index: 2;
-  word-wrap: unset;
+  //background-color: rgba(255, 244, 116, 0.17);
 
-  .nav-logo{
-    margin-top: 5px;
-    width: 70px;
-    background-color: rgba(204, 204, 204, 0.85);
-    border-radius: 50%;
-    transition: all 0.3s ease-in-out;
+  .topnav {
+    max-width: 1500px;
+    margin: 30px auto 0 auto;
+    //background-color: rgba(255, 97, 232, 0.17);
 
-    &:hover{
-      transform: scale(1.1);
+    .nav-logo{
+      margin-top: 5px;
+      width: 70px;
+      background-color: rgba(204, 204, 204, 0.85);
+      border-radius: 50%;
+      transition: all 0.3s ease-in-out;
+
+      &:hover{
+        transform: scale(1.1);
+      }
+    }
+    .topnav-right {
+      max-width: max-content;
+      margin: auto;
+      a {
+        background-color: rgba(251, 250, 250, 0.97);
+        color: rgb(0, 0, 0, 0.7);
+        text-align: center;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        padding: 30px 10px 10px 10px;
+        transition: all 0.5s ease-in-out;
+
+        &:first-child {
+          border-bottom-left-radius: 20px;
+        }
+        &:last-child {
+          border-bottom-right-radius: 20px;
+        }
+        &:hover {
+          background-color: $navFooterHoverColor;
+          color: rgb(0, 0, 0);
+        }
+        .active {
+          background-color: #4CAF50;
+          color: #000000;
+        }
+      }
     }
   }
 }
 
-
-.topnav .topnav-right a {
-  background-color: rgba(238, 237, 237, 0.97);
-  float: left;
-  color: rgb(0, 0, 0, 0.7);
-  text-align: center;
-  padding: 40px 10px 10px 10px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-  //border-bottom-left-radius: 20px;
-  //border-bottom-right-radius: 20px;
-
-}
-
-.topnav .topnav-right a:first-child {
-  border-bottom-left-radius: 20px;
-}
-.topnav .topnav-right a:last-child {
-  border-bottom-right-radius: 20px;
-}
-
-
-.topnav .topnav-right a:hover {
-  background-color: $navFooterHoverColor;
-  color: rgb(0, 0, 0);
-}
-
-.topnav a.active {
-  background-color: #4CAF50;
-  color: #000000;
-}
-
-.topnav-right {
-  float: right;
-  //margin-right: 2rem;
+@media screen and (min-width: 1030px) {
+  .navbar .topnav .topnav-right{
+    float: right;
+    margin: 0 1rem;
+  }
 }
 
 .footer {
-  overflow: hidden;
   left: 0;
   bottom: 0;
   position: relative;
@@ -235,23 +236,29 @@ $font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fi
   background-color: rgba(0, 0, 0, 0.1);
   margin: auto;
 
-  .footer-max{
-    margin: auto;
+  .footer-container{
     width: 100%;
-    max-width: 1600px;
-    padding: 0 3vw 0 5rem;
+    max-width: 1500px;
+    background-color: rgba(96, 56, 218, 0.14);
+    margin: auto;
+    .footer-max{
+      margin: auto;
+      width: max-content;
+      float: right;
+      padding: 0 2rem;
+
+    }
   }
-}
-.footer a {
-  //background-color: rgba(255, 255, 255, 0.8);
-  float: left;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  padding: 10px 10px;
-  text-decoration: none;
-  font-size: 1rem;
-}
-.footer a:hover {
-  background-color: $navFooterHoverColor;
-  color: rgba(0, 0, 0, 1);
+  a {
+    float: left;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    &:hover {
+      background-color: $navFooterHoverColor;
+      color: rgba(0, 0, 0, 1);
+    }
+  }
 }

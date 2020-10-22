@@ -166,7 +166,7 @@ class Portfolio extends Component {
         };
         smoothscroll.polyfill();
         const {loading, pageContent, portfolios, experiences} = this.state;
-        const {name, email, subject, message} = this.state
+        const {name, email, subject, message} = this.state;
         const ready = (!loading && portfolios !== null && pageContent !== null && experiences !== null);
         if (ready){
             return (
@@ -179,13 +179,15 @@ class Portfolio extends Component {
                     }}>
                         <div className="container defaultFont">
                             {this.state.showModal ? "" :
-                                <div className="topnav" id={`navbar`}>
-                                    {/*<a href="#top"><img className={`nav-logo`} src={pageContent.favicon} href="#top"/></a>*/}
-                                    <div className="topnav-right">
-                                        <a href="#top">Home</a>
-                                        <a href="#projects">Projects</a>
-                                        <a href="#experience">Experiences</a>
-                                        <a href="#contact">Contact</a>
+                                <div className={`navbar`}>
+                                    <div className="topnav" id={`navbar`}>
+                                        {/*<a href="#top"><img className={`nav-logo`} src={pageContent.favicon} href="#top"/></a>*/}
+                                        <div className="topnav-right">
+                                            <a href="#top">Home</a>
+                                            <a href="#projects">Projects</a>
+                                            <a href="#experience">Experiences</a>
+                                            <a href="#contact">Contact</a>
+                                        </div>
                                     </div>
                                 </div>
                             }
@@ -384,20 +386,20 @@ class Portfolio extends Component {
 
                         </div>
                         <div className="footer">
-                            <div className={`footer-max`}>
-                                <div className="topnav-right">
-                                    { pageContent.linkedin ?
-                                        <a href={pageContent.linkedin} target={`_blank`}>
-                                        <i className="fab fa-linkedin-in fa-2x"></i></a> : ""
-                                    }
-                                    { pageContent.facebook ?
-                                    <a href={pageContent.facebook} target={`_blank`}>
-                                        <i className="fab fa-facebook-f fa-2x"></i></a> : ""
-                                    }
-                                    { pageContent.git ?
-                                    <a href={pageContent.git} target={`_blank`}>
-                                        <i className="fab fa-github fa-2x"></i></a> : ""
-                                    }
+                            <div className={'footer-container'}>
+                                <div className={`footer-max`}>
+                                        { pageContent.linkedin ?
+                                            <a href={pageContent.linkedin} target={`_blank`}>
+                                            <i className="fab fa-linkedin-in fa-2x"></i></a> : ""
+                                        }
+                                        { pageContent.facebook ?
+                                        <a href={pageContent.facebook} target={`_blank`}>
+                                            <i className="fab fa-facebook-f fa-2x"></i></a> : ""
+                                        }
+                                        { pageContent.git ?
+                                        <a href={pageContent.git} target={`_blank`}>
+                                            <i className="fab fa-github fa-2x"></i></a> : ""
+                                        }
                                 </div>
                             </div>
                         </div>
