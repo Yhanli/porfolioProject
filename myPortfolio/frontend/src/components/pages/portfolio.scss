@@ -188,21 +188,31 @@ $font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fi
 
 
 .topnav .topnav-right a {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(238, 237, 237, 0.97);
   float: left;
-  color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0, 0.7);
   text-align: center;
   padding: 40px 10px 10px 10px;
   text-decoration: none;
   font-size: 1.1rem;
-  //font-weight: bold;
+  font-weight: bold;
   transition: all 0.3s ease-in-out;
-  border-radius: 20px;
+  //border-bottom-left-radius: 20px;
+  //border-bottom-right-radius: 20px;
+
 }
+
+.topnav .topnav-right a:first-child {
+  border-bottom-left-radius: 20px;
+}
+.topnav .topnav-right a:last-child {
+  border-bottom-right-radius: 20px;
+}
+
 
 .topnav .topnav-right a:hover {
   background-color: $navFooterHoverColor;
-  color: rgba(0, 0, 0, 1);
+  color: rgb(0, 0, 0);
 }
 
 .topnav a.active {
