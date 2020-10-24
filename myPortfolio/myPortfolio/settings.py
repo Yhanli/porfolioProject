@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'frontend',
     'webPages',
     'portfolios',
-    'experience'
+    'experience',
+    'records'
 
 
 ]
