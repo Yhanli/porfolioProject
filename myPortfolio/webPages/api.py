@@ -20,6 +20,7 @@ class LikeThread(threading.Thread):
     def run(self):
         request = self.request
 
+
 def record_log(request, status):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
@@ -49,9 +50,13 @@ class WebPagesViewSet(viewsets.ViewSet):
             ip = x_forwarded_for.split(',')[0]
         else:
             ip = request.META.get('REMOTE_ADDR')
-        repeat = Records.objects.filter(reference=ip, created_at__gte=(timezone.now()-timedelta(minutes=1)))
+        repeat = Records.objects.filter(reference=ip, created_at__gte=(
+                    timezone.now() - timedelta(minutes=settings.EMAIL_MAX_DURATION)))
         if repeat:
-            return Response(f"Too frequent, max 5 min per contact IP. {ip}", status=status.HTTP_400_BAD_REQUEST)
+            time_wait = ((repeat[0].created_at + timedelta(
+                minutes=settings.EMAIL_MAX_DURATION)) - timezone.now()).seconds
+            return Response(f"Too frequent, please wait {time_wait} seconds before trying with IP:{ip}.",
+                            status=status.HTTP_400_BAD_REQUEST)
         try:
             email_text = f"""\
 From: {request.data['email']}
@@ -68,7 +73,7 @@ Contact person's email is {request.data['email']}
                 server.ehlo()
                 server.login(settings.EMAIL_ACCOUNT, settings.EMAIL_PASSWORD)
                 server.ehlo()
-                server.sendmail(settings.EMAIL_ACCOUNT, request.data['sendto'], email_text)
+                server.sendmail(settings.EMAIL_ACCOUNT, request.data['sendto'], email_text.encode('utf-8'))
                 server.ehlo()
             record_log(request, 1)
             return Response("Message sent", status=status.HTTP_200_OK)

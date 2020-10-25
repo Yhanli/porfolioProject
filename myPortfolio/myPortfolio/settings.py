@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'z&rfad358xma&$(74o6n5x8vh9w)u^a_)3vj*@dvc(nxlg41+k'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -50,12 +48,11 @@ INSTALLED_APPS = [
     'experience',
     'records'
 
-
 ]
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': None, #You can change this based on your requirements.
+        'toolbar': None,  # You can change this based on your requirements.
         'width': 'auto',
 
     },
@@ -91,7 +88,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myPortfolio.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -106,6 +102,8 @@ EMAIL_ACCOUNT = "noreply.djangoautoemail@gmail.com"
 EMAIL_PASSWORD = "django1234567890"
 EMAIL_SERVER = "smtp.gmail.com"
 EMAIL_PORT = 465
+
+EMAIL_MAX_DURATION = 5  # minutes
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -139,7 +137,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
