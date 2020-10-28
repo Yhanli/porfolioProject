@@ -138,6 +138,12 @@ class Portfolio extends Component {
             .catch(error => {
                 if (error.response) {
                     this.props.alert.show(error.response.data,{type: "error"});
+                    this.setState({
+                        name:name,
+                        email:email,
+                        subject:subject,
+                        message:message
+                    });
                 }
             });
 
