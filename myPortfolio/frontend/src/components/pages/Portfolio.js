@@ -9,6 +9,8 @@ import "../modules/modal.css"
 import "./../ckeditor.scss"
 import "./timeline.scss"
 
+import close from "./../assets/close.png"
+
 import 'react-slideshow-image/dist/styles.css'
 
 import smoothscroll from 'smoothscroll-polyfill';
@@ -93,10 +95,17 @@ class Portfolio extends Component {
         }
     };
 
-    showModalAction = (id) =>{
+    showModalAction = (id, project_image=null) =>{
         const element = document.getElementById(`post-modal-${id}`);
         const element_content = document.getElementById(`post-modal-${id}-content`);
         const main_html = document.body;
+        if (project_image !== null){
+            for (const image of project_image){
+                const modal_image = document.getElementById(`modal-image-${image.id}`)
+                modal_image.src = modal_image.getAttribute('data-src');
+            }
+        }
+
 
         if (!this.state.showModal) {
             element_content.classList.add("modal-active-content");
@@ -225,7 +234,8 @@ class Portfolio extends Component {
                                         return (
                                             <div key={`post-${id}`} >
                                                 <div className={`modal-bg`} id={`post-modal-${id}`}
-                                                     onClick={this.showModalAction.bind(this, id)}>
+                                                     onClick={this.showModalAction.bind(this, id, null)}>
+                                                    <img src={close} className={'modal-close'}/>
                                                 </div>
                                                 <div className={`modal-bg-content`} id={`post-modal-${id}-content`}>
                                                     <div className={`modal-content`}>
@@ -236,9 +246,9 @@ class Portfolio extends Component {
                                                                         <a key={`slid-img-${image.id}`} href={image.picture_direct} target="_blank" style={{width: "100%",
                                                                             maxHeight:'550px'
                                                                         }}>
-                                                                        <img  className={`modal-image`}
+                                                                        <img  className={`modal-image`} id={`modal-image-${image.id}`}
                                                                              title={image.picture_direct ? `${image.picture_alt}` : ''}
-                                                                              src={image.picture}
+                                                                              data-src={image.picture} alt={``}
                                                                         /></a>
                                                                 )}
                                                             </Zoom>
@@ -268,8 +278,7 @@ class Portfolio extends Component {
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div  className={`projectPreContainer`} onClick={this.showModalAction.bind(this, id)}>
+                                                <div  className={`projectPreContainer`} onClick={this.showModalAction.bind(this, id, project_image)}>
                                                         <h3 className={`marginBelow2`}>
                                                             <i className="fa fa-book"></i>
                                                             &nbsp;
