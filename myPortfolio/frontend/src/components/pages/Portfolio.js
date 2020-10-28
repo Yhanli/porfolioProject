@@ -243,8 +243,7 @@ class Portfolio extends Component {
                                                             <Zoom {...zoomInProperties}>
                                                                 {project_image.map(
                                                                     image =>
-                                                                        <a key={`slid-img-${image.id}`} href={image.picture_direct} target="_blank" style={{width: "100%",
-                                                                            maxHeight:'550px'
+                                                                        <a key={`slid-img-${image.id}`} href={image.picture_direct} target="_blank" style={{width: "100%"
                                                                         }}>
                                                                         <img  className={`modal-image`} id={`modal-image-${image.id}`}
                                                                              title={image.picture_direct ? `${image.picture_alt}` : ''}
