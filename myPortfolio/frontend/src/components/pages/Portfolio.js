@@ -278,7 +278,8 @@ class Portfolio extends Component {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div  className={`projectPreContainer`} onClick={this.showModalAction.bind(this, id, project_image)}>
+                                                <div title={`${title}\nClick to view project detail`}
+                                                    className={`projectPreContainer`} onClick={this.showModalAction.bind(this, id, project_image)}>
                                                         <h3 className={`marginBelow2`}>
                                                             <i className="fa fa-book"></i>
                                                             &nbsp;
