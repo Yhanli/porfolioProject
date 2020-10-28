@@ -14,6 +14,7 @@ class PortfolioSerializer(serializers.ModelSerializer):
 class WebPagesSerializer(serializers.ModelSerializer):
     portfolio = PortfolioSerializer()
     experiences = ExperiencesSerializer(many=True)
+    front_image_thumb = serializers.ImageField(read_only=True)
     class Meta:
         model = WebPages
         fields = "__all__"

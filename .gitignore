@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 /myPortfolio/frontend/static/
 /node_modules/
+/myPortfolio/media_root/CACHE/images/

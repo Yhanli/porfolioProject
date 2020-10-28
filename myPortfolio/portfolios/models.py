@@ -1,6 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill, Thumbnail
 # Create your models here.
 
 class Portfolios(models.Model):
@@ -27,6 +29,10 @@ class Portfolios(models.Model):
 
 class ProjectPictures(models.Model):
     picture = models.ImageField(upload_to="portfolio_content/", blank=True)
+    thumbnail = ImageSpecField(source="picture",
+                               processors=[Thumbnail(150, 100)],
+                               format='PNG',
+                               options={'quality': 60})
     picture_direct = models.URLField(blank=True, null=True)
     picture_alt = models.CharField(max_length=250, blank=True, null=True)
     portfolioId = models.ForeignKey(Portfolios, on_delete=models.CASCADE, related_name="project_image")

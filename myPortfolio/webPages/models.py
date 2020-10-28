@@ -1,4 +1,6 @@
 from django.db import models
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 # Create your models here.
@@ -13,7 +15,6 @@ class WebPages(models.Model):
     git = models.CharField(max_length=1000, blank=True)
     linkedin = models.CharField(max_length=1000, blank=True)
     contact_email = models.EmailField(blank=False)
-
 
     class Meta:
         verbose_name = "Website Page"
@@ -33,7 +34,7 @@ class Portfolio(models.Model):
 
 
 class Experiences(models.Model):
-    webPagesId = models.ForeignKey(WebPages, on_delete=models.CASCADE,  related_name="experiences")
+    webPagesId = models.ForeignKey(WebPages, on_delete=models.CASCADE, related_name="experiences")
 
     title = models.CharField(max_length=1000, blank=True)
     company = models.CharField(max_length=1000, blank=True)
@@ -41,4 +42,3 @@ class Experiences(models.Model):
     time_start = models.DateField(blank=True)
     time_end = models.DateField(blank=True, null=True)
     description = models.TextField(blank=True)
-

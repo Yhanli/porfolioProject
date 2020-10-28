@@ -13,6 +13,7 @@ pillow = "*"
 django-nested-admin = "*"
 gunicorn = "*"
 django-ckeditor = "*"
+django-imagekit = "*"
 
 [requires]
 python_version = "3.7"
