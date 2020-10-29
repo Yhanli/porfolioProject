@@ -252,7 +252,7 @@ class Portfolio extends Component {
                                                                 )}
                                                             </Zoom>
                                                         </div>
-                                                        <div>
+                                                        <div className={'marginBelow2'}>
                                                             <h2 className={`mainTitleStyle`}>{title}</h2>
                                                             <p className={`mainDateStyle marginBelow2`}>{this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>
                                                         </div>
