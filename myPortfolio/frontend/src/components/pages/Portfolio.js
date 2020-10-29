@@ -101,8 +101,10 @@ class Portfolio extends Component {
         const main_html = document.body;
         if (project_image !== null){
             for (const image of project_image){
-                const modal_image = document.getElementById(`modal-image-${image.id}`)
-                modal_image.src = modal_image.getAttribute('data-src');
+                const modal_image = document.getElementById(`modal-image-${image.id}`);
+                if (!modal_image.getAttribute('src')){
+                    modal_image.src = modal_image.getAttribute('data-src');
+                }
             }
         }
 
