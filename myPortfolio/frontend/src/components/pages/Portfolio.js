@@ -227,7 +227,7 @@ class Portfolio extends Component {
                                     </div>
                                 </div>
                                 <div className={`paddingTop5 marginBelow2 subHeadingStyle`}  id={`projects`}>
-                                    <h1>My Projects</h1>
+                                    <h1>My Projects/Works</h1>
                                 </div>
                                 <div className={`secondSectionContainer`}>
                                     {portfolios.map(portfolio => {
