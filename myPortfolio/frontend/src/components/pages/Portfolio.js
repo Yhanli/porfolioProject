@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Zoom } from 'react-slideshow-image';
 import {withAlert} from "react-alert";
 
+import Carousel from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
+
 import "./portfolio.scss"
 import "./../general.scss"
 import "../modules/modal.css"
@@ -12,7 +15,6 @@ import "./timeline.scss"
 import close from "./../assets/close.png"
 
 import 'react-slideshow-image/dist/styles.css'
-
 import smoothscroll from 'smoothscroll-polyfill';
 
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
@@ -229,7 +231,7 @@ class Portfolio extends Component {
                                 <div className={`paddingTop5 marginBelow2 subHeadingStyle`}  id={`projects`}>
                                     <h1>My Projects/Works</h1>
                                 </div>
-                                <div className={`secondSectionContainer`}>
+                                <div>
                                     {portfolios.map(portfolio => {
                                         const {id, title, description, styled_description, project_startdate, project_enddate, direct_url,
                                             project_image, source_code_url} = portfolio;
@@ -247,10 +249,10 @@ class Portfolio extends Component {
                                                                     image =>
                                                                         <a key={`slid-img-${image.id}`} href={image.picture_direct} target="_blank" style={{width: "100%"
                                                                         }}>
-                                                                        <img  className={`modal-image`} id={`modal-image-${image.id}`}
-                                                                             title={image.picture_direct ? `${image.picture_alt}` : ''}
-                                                                              data-src={image.picture} alt={``}
-                                                                        /></a>
+                                                                            <img  className={`modal-image`} id={`modal-image-${image.id}`}
+                                                                                  title={image.picture_direct ? `${image.picture_alt}` : ''}
+                                                                                  data-src={image.picture} alt={``}
+                                                                            /></a>
                                                                 )}
                                                             </Zoom>
                                                         </div>
@@ -267,20 +269,32 @@ class Portfolio extends Component {
                                                         </div>
                                                         <div className={`mainTextStyle`}>
                                                             {  source_code_url? <a className="button"
-                                                                href={source_code_url} target="_blank"
+                                                                                   href={source_code_url} target="_blank"
                                                                 ><span>Open Code</span></a>
                                                                 : ""
                                                             }
                                                             {  direct_url? <a className="button"
-                                                                                   href={direct_url} target="_blank"
+                                                                              href={direct_url} target="_blank"
                                                                 ><span>Open Project</span></a>
                                                                 : ""
                                                             }
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div title={`${title}\nClick to view project detail`}
-                                                    className={`projectPreContainer`} onClick={this.showModalAction.bind(this, id, project_image)}>
+
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                <div className={`secondSectionContainer`}>
+                                    <Carousel plugins={['arrows','infinite' ]}>
+                                        {portfolios.map(portfolio => {
+                                            const {id, title, description, styled_description, project_startdate, project_enddate, direct_url,
+                                                project_image, source_code_url} = portfolio;
+                                            return (
+                                                <div key={`post-${id}`} >
+                                                    <div title={`${title}\nClick to view project detail`}
+                                                         className={`projectPreContainer`} onClick={this.showModalAction.bind(this, id, project_image)}>
                                                         <h3 className={`marginBelow2`}>
                                                             <i className="fa fa-book"></i>
                                                             &nbsp;
@@ -288,17 +302,20 @@ class Portfolio extends Component {
                                                         <p className={`previewText`}>{this.previewText(description)}</p>
                                                         {/*<p>{direct_url}</p>*/}
                                                         <div className={`marginBelow1 previewImageContainer`}>{project_image.slice(0,20).map(image => {
-                                                            const {id,picture,thumbnail} = image;
-                                                            return(
-                                                                <img key={`img-${id}`} className={`previewImage`} src={thumbnail}/>
-                                                            )
+                                                                const {id,picture,thumbnail} = image;
+                                                                return(
+                                                                    <img key={`img-${id}`} className={`previewImage`} src={thumbnail}/>
+                                                                )
                                                             }
                                                         )}</div>
                                                         {/*<p className={``}>Duration : {this.cleanseDate(project_startdate)} To {this.cleanseDate(project_enddate)}</p>*/}
+                                                    </div>
+
+
                                                 </div>
-                                            </div>
-                                        )
-                                    })}
+                                            )
+                                        })}
+                                    </Carousel>
                                 </div>
                                 <div className={`paddingTop5 marginBelow2 subHeadingStyle`} id={`experience`}>
                                     <h1>My Experiences</h1>
