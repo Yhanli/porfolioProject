@@ -4,6 +4,7 @@ import { Zoom } from 'react-slideshow-image';
 import {withAlert} from "react-alert";
 
 import Carousel from '@brainhubeu/react-carousel';
+import { slidesToShowPlugin } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 
 import "./portfolio.scss"
@@ -287,7 +288,53 @@ class Portfolio extends Component {
                                     })}
                                 </div>
                                 <div className={`secondSectionContainer`}>
-                                    <Carousel plugins={['arrows','infinite' ]}>
+                                    <Carousel
+                                        plugins={[
+                                            'arrows',
+                                            'centered',
+                                            'infinite',
+                                            {
+                                                resolve: slidesToShowPlugin,
+                                                options: {
+                                                    numberOfSlides: 3
+                                                }
+                                            }
+                                        ]}
+                                        breakpoints={{
+                                            640: {
+                                                plugins: [
+                                                    {
+                                                        resolve: slidesToShowPlugin,
+                                                        options: {
+                                                            numberOfSlides: 1
+                                                        }
+                                                    },
+                                                ]
+                                            },
+                                            900: {
+                                                plugins: [
+                                                    {
+                                                        resolve: slidesToShowPlugin,
+                                                        options: {
+                                                            numberOfSlides: 2
+                                                        }
+                                                    },
+                                                ]
+                                            },
+                                            1200: {
+                                                plugins: [
+                                                    {
+                                                        resolve: slidesToShowPlugin,
+                                                        options: {
+                                                            numberOfSlides: 3
+                                                        }
+                                                    },
+                                                ]
+                                            }
+
+                                        }}
+
+                                    >
                                         {portfolios.map(portfolio => {
                                             const {id, title, description, styled_description, project_startdate, project_enddate, direct_url,
                                                 project_image, source_code_url} = portfolio;
