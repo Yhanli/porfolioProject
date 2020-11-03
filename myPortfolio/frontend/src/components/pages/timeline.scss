@@ -1,5 +1,5 @@
 
-
+$themeColor: rgb(229, 244, 227);
 .r-title{
   margin-top: var(--rTitleMarginTop, 0) !important;
   margin-bottom: var(--rTitleMarginBottom, 0) !important;
@@ -32,7 +32,7 @@ p:not([class]):first-child{
 
 .time{
   padding: var(--timePadding, .25rem 1.25rem .25rem);
-  background-color: var(--timeBackgroundColor, #fff0a5);
+  background-color: var(--timeBackgroundColor, $themeColor);
 
   border-radius: var(--timelineCardBorderRadius, 5px);
 
@@ -122,7 +122,7 @@ p:not([class]):first-child{
 }
 
 .timeline{
-  --timelineMainColor: #fff0a5;
+  --timelineMainColor: #b7e5f9;
 }
 
 body{
