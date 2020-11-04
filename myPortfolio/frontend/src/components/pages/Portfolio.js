@@ -86,12 +86,12 @@ class Portfolio extends Component {
     };
 
     previewText = (string) => {
-        const max_length = 220;
+        const max_length = 220-20; //220
         if (string.length > max_length){
             return string.substring(0,max_length) + "...";
         }
         else{
-            return string;
+            return string + "(Click to view details)";
         }
     };
 
@@ -171,6 +171,22 @@ class Portfolio extends Component {
     };
 
     showExperience = (id)=>{
+        const experiences = this.state.experiences;
+        experiences.forEach(function(year){
+            year.experience.forEach(function(exp){
+                if (exp.id !== id){
+                    const addr = document.getElementById(`add-${exp.id}`);
+                    const desc = document.getElementById(`desc-${exp.id}`);
+                    const o_card = document.getElementById(`exp-card-${exp.id}`);
+                    if (addr.classList.contains("active")){
+                        addr.classList.toggle("active");
+                        desc.classList.toggle("active");
+                        o_card.classList.toggle("active");
+                    }
+                }
+            });
+
+        });
         const address = document.getElementById(`add-${id}`);
         const description = document.getElementById(`desc-${id}`);
         const card = document.getElementById(`exp-card-${id}`);
