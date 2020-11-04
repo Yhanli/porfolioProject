@@ -170,7 +170,14 @@ class Portfolio extends Component {
         this.setState({[e.target.name]: e.target.value})
     };
 
-
+    showExperience = (id)=>{
+        const address = document.getElementById(`add-${id}`);
+        const description = document.getElementById(`desc-${id}`);
+        const card = document.getElementById(`exp-card-${id}`);
+        card.classList.toggle("active");
+        address.classList.toggle("active");
+        description.classList.toggle("active");
+    };
 
     render(){
         const zoomInProperties = {
@@ -319,8 +326,8 @@ class Portfolio extends Component {
                                 const {id,title,nature,company,location,time_start,
                                     time_end,description,month,day} = indi_exp;
                                 return(
-                                    <div className="timeline__card card" key={`exp-card-${id}`}>
-                                        <header className="card__header marginBelow1">
+                                    <div className="timeline__card card" key={`exp-card-${id}`} id={`exp-card-${id}`} onClick={this.showExperience.bind(this, id)}>
+                                        <header className="card__header marginBelow1 ">
                                             <time className="time" dateTime={time_start}>
                                                 <span className="time__month">{month}</span>
                                             </time>
@@ -329,10 +336,10 @@ class Portfolio extends Component {
                                                 <span className="time__month">{time_end}</span>
                                             </time>
                                             <h3 className="card__title r-title">{title}{nature? <span style={{fontSize: "0.7rem"}}>&nbsp;&nbsp;|{nature}</span>:""}</h3>
-                                            <div className="card__content">At {company} - {location}</div>
+                                            <div className="card__content" id={`add-${id}`}>At {company} - {location}</div>
 
                                         </header>
-                                        <div className="card__content">
+                                        <div className="card__content" id={`desc-${id}`}>
                                             <p>{description}</p>
                                         </div>
                                     </div>

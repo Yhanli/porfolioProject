@@ -1,5 +1,5 @@
 
-$themeColor: rgb(229, 244, 227);
+$themeColor: rgb(239, 120, 60);
 .r-title{
   margin-top: var(--rTitleMarginTop, 0) !important;
   margin-bottom: var(--rTitleMarginBottom, 0) !important;
@@ -39,15 +39,17 @@ p:not([class]):first-child{
   font-size: var(--timeFontSize, .75rem);
   font-weight: var(--timeFontWeight, 700);
   text-transform: var(--timeTextTransform, uppercase);
-  color: var(--timeColor, currentColor);
+  color: white;//var(--timeColor, currentColor);
 }
 
 .card{
-  padding: var(--timelineCardPadding, 1.5rem 1.5rem 1.25rem);
+  padding: var(--timelineCardPadding, 1rem 1rem 1rem);
 }
 
 .card__content{
   margin-top: var(--cardContentMarginTop, .5rem);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .card{
@@ -101,6 +103,7 @@ p:not([class]):first-child{
 .timeline__card{
   position: relative;
   margin-left: var(--timelineCardLineGap, 1rem);
+  max-height: 7rem;
 }
 
 .timeline__cards{
@@ -122,7 +125,10 @@ p:not([class]):first-child{
 }
 
 .timeline{
-  --timelineMainColor: #b7e5f9;
+  --timelineMainColor: #46465c;
+  //background-color: #0f0f0f;
+  width: 90vw;
+  max-width: 1500px;
 }
 
 body{
@@ -149,4 +155,12 @@ p:last-child{
   max-width: 97%;
   margin-left: auto;
   margin-right: auto;
+}
+.active{
+  opacity: 1;
+  max-height: 60rem;
+}
+
+.timeline__group{
+  cursor: pointer;
 }

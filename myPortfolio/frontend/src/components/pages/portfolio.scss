@@ -8,7 +8,7 @@ $image_gradient_color: rgb(255, 255, 255);
 
 $portfolioPreviewBoxColor: rgba(166, 225, 250, 0.8);
 $navFooterHoverColor: rgba(166, 225, 250, 0.92);
-$textColor: rgb(4, 18, 53);
+$textColor: rgb(3, 30, 73);
 
 $font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
 
@@ -98,6 +98,7 @@ $font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fi
       background-color: $portfolioPreviewBoxColor;
       transition: all 0.3s ease-in-out!important;
       cursor: pointer;
+      box-shadow: 0 15px 20px -15px orange;
 
       .previewImageContainer{
         height: 71px;
@@ -127,8 +128,9 @@ $font:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fi
 
       &:hover{
         position: relative;
-        box-shadow: 5px 10px rgba(96, 96, 96, 0.15);
-        transform: translateX(-2px) translateY(-10px);
+        box-shadow: 0 20px 20px -10px #46465c;
+        //box-shadow: 5px 10px rgba(96, 96, 96, 0.15);
+        transform: translateY(-10px);
       }
     }
   }
