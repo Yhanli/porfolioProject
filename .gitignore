@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+ 
 # Distribution / packaging
 .Python
 build/
@@ -131,3 +131,4 @@ dmypy.json
 /myPortfolio/media_root/CACHE/images/
 /myPortfolio/static/
 /myPortfolio/frontend/static/
+/myPortfolio/myPortfolio/parameter.py

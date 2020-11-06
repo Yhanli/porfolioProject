@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from myPortfolio.parameter import ENV
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'z&rfad358xma&$(74o6n5x8vh9w)u^a_)3vj*@dvc(nxlg41+k'
+SECRET_KEY = ENV.DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = ENV.DEBUG
 
 ALLOWED_HOSTS = ['yuhanli.tech', 'www.yuhanli.tech', "127.0.0.1"]
 
@@ -97,13 +98,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-EMAIL_ACCOUNT = "noreply.djangoautoemail@gmail.com"
-EMAIL_PASSWORD = "django1234567890"
-EMAIL_SERVER = "smtp.gmail.com"
-EMAIL_PORT = 465
-
-EMAIL_MAX_DURATION = 5  # minutes
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
