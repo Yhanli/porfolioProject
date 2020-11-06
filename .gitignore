@@ -127,6 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/myPortfolio/frontend/static/
 /node_modules/
 /myPortfolio/media_root/CACHE/images/
+/myPortfolio/frontend/static_root/
