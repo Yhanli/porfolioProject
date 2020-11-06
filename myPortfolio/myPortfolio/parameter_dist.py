@@ -1,6 +1,6 @@
 
 class ENV:
-    DJANGO_SECRET_KEY = "358xma&h9wn5j*@dvz&rfadx8vvc(a)u^a_)3$(74o6asg41+k"  # generate your own key
+    DJANGO_SECRET_KEY = ""  # generate your own key
     DEBUG = True
 
     EMAIL_ACCOUNT = "email@address.com"
