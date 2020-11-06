@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls import url, re_path
 from django.conf.urls.static import static, serve
 from frontend import views
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +31,5 @@ urlpatterns = [
 
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
-]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + [url(r'^.*$', views.index)]
+]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + [path(r'*', TemplateView.as_view(template_name="templates/public/index.html"))]
 
