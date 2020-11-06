@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z&rfad358xma&$(74o6n5x8vh9w)u^a_)3vj*@dvc(nxlg41+k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['yuhanli.tech', 'www.yuhanli.tech', "127.0.0.1"]
 
 # Application definition
 
