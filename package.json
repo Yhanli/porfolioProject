@@ -4,7 +4,7 @@
   "description": "my portfolio",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch ./myPortfolio/frontend/src/index.js --output myPortfolio/static/public/main.js ",
+    "dev": "webpack --mode development --watch ./myPortfolio/frontend/src/index.js --output myPortfolio/frontend/static/public/main.js ",
     "build": "webpack --mode production ./myPortfolio/frontend/src/index.js --output myPortfolio/frontend/staticfiles/public/main.js"
   },
   "repository": {
