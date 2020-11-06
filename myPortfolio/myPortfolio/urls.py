@@ -31,5 +31,5 @@ urlpatterns = [
 
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
-]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + [path(r'*', TemplateView.as_view(template_name="templates/public/index.html"))]
+]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + [url(r'^.*$', views.index)]
 
