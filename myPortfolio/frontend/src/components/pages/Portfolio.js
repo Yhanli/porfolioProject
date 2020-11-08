@@ -86,9 +86,9 @@ class Portfolio extends Component {
     };
 
     previewText = (string) => {
-        const max_length = 220-20; //220
+        const max_length = 150; //220
         if (string.length > max_length){
-            return string.substring(0,max_length) + "...";
+            return string.substring(0,max_length) + "...(Click to view details)";
         }
         else{
             return string + "(Click to view details)";
