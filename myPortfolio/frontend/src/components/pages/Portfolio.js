@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Zoom } from 'react-slideshow-image';
 import {withAlert} from "react-alert";
 
+import HorizontalTimeline from "react-horizontal-timeline";
+
 import "./portfolio.scss"
 import "./../general.scss"
 import "../modules/modal.css"
@@ -33,7 +35,30 @@ class Portfolio extends Component {
             email:"",
             subject:"",
             message:"",
-            sendto:""
+            sendto:"",
+            curIdx: 0,
+            prevIdx: -1,
+            experienceValue:["2018-03-22", "2018-03-23"],
+            experienceContent:[{
+                data: "2018-03-22",
+                title: "Title go here",
+                content: "Content go here",
+                statusE: "test go here"
+            },
+            {
+                data: "2018-03-23",
+                title: "Title go here2",
+                content: "Content go here2",
+                statusE: "test go here2"
+            }],
+            expShow:{
+                title:"",
+                nature:"",
+                company:"",
+                location:"",
+                description:"",
+
+            }
         }
     }
 
@@ -60,6 +85,7 @@ class Portfolio extends Component {
         axios.get('/api/experience/').then(res=>{
             const experiences = res.data;
             this.setState({loading: false, experiences:experiences});
+            this.setState({expShow:{title:"testing"}})
         })
     };
 
@@ -171,31 +197,34 @@ class Portfolio extends Component {
     };
 
     showExperience = (id)=>{
-        const experiences = this.state.experiences;
-        experiences.forEach(function(year){
-            year.experience.forEach(function(exp){
-                if (exp.id !== id){
-                    const addr = document.getElementById(`add-${exp.id}`);
-                    const desc = document.getElementById(`desc-${exp.id}`);
-                    const o_card = document.getElementById(`exp-card-${exp.id}`);
-                    if (addr.classList.contains("active")){
-                        addr.classList.toggle("active");
-                        desc.classList.toggle("active");
-                        o_card.classList.toggle("active");
-                    }
-                }
-            });
-
-        });
-        const address = document.getElementById(`add-${id}`);
-        const description = document.getElementById(`desc-${id}`);
-        const card = document.getElementById(`exp-card-${id}`);
-        card.classList.toggle("active");
-        address.classList.toggle("active");
-        description.classList.toggle("active");
+        // const experiences = this.state.experiences;
+        // experiences.forEach(function(year){
+        //     year.experience.forEach(function(exp){
+        //         if (exp.id !== id){
+        //             const addr = document.getElementById(`add-${exp.id}`);
+        //             const desc = document.getElementById(`desc-${exp.id}`);
+        //             const o_card = document.getElementById(`exp-card-${exp.id}`);
+        //             if (addr.classList.contains("active")){
+        //                 addr.classList.toggle("active");
+        //                 desc.classList.toggle("active");
+        //                 o_card.classList.toggle("active");
+        //             }
+        //         }
+        //     });
+        //
+        // });
+        // const address = document.getElementById(`add-${id}`);
+        // const description = document.getElementById(`desc-${id}`);
+        // const card = document.getElementById(`exp-card-${id}`);
+        // card.classList.toggle("active");
+        // address.classList.toggle("active");
+        // description.classList.toggle("active");
     };
 
     render(){
+
+        const {curIdx, prevIdx} = this.state;
+
         const zoomInProperties = {
             indicator:"true",
             scale: 1.4,
@@ -209,6 +238,7 @@ class Portfolio extends Component {
         const {loading, pageContent, portfolios, experiences} = this.state;
         const {name, email, subject, message} = this.state;
         const ready = (!loading && portfolios !== null && pageContent !== null && experiences !== null);
+
         if (ready){
             return (
                 <Fragment>
@@ -329,7 +359,7 @@ class Portfolio extends Component {
                                 <div className={`secondSectionContainer`} >
                                     <div>
                                         <div className="page">
-                                            <div className="timeline">
+                                            <div className="timeline vertical-time">
 
         {experiences.map(item=>{
             const {year, experience} = item;
@@ -366,6 +396,51 @@ class Portfolio extends Component {
                 </div>
             )
         })}
+                                            </div>
+                                            <div className="horizontal-timeline">
+
+
+                                                <div
+                                                    style={{
+                                                        width: "100%",
+                                                        height: "100px",
+                                                        margin: "0 auto",
+                                                        marginTop: "20px",
+                                                        fontSize: "15px"
+                                                    }}
+                                                >
+                                                    <HorizontalTimeline
+                                                        styles={{
+                                                            background: "#f8f8f8",
+                                                            foreground: "#1A79AD",
+                                                            outline: "#dfdfdf"
+                                                        }}
+                                                        index={this.state.curIdx}
+                                                        indexClick={index => {
+                                                            const curIdx = this.state.curIdx;
+                                                            const exp = this.state.experienceContent[index]
+                                                            this.setState({
+                                                                curIdx: index,
+                                                                prevIdx: curIdx,
+                                                                expShow:{
+                                                                    title:exp.title,
+                                                                }
+                                                            });
+                                                        }}
+                                                        values={this.state.experienceContent.map(x => x.data)}
+                                                    />
+                                                </div>
+                                                <div className="text-center">
+                                                    {/* any arbitrary component can go here */}
+                                                        <div>{this.state.expShow.title}</div>
+                                                </div>
+        {/*{experiences.map(item=>{*/}
+        {/*    const {year, experience} = item;*/}
+        {/*    console.log(item);*/}
+        {/*    return (*/}
+        {/*        <div/>*/}
+        {/*    )*/}
+        {/*})}*/}
                                             </div>
                                         </div>
 
