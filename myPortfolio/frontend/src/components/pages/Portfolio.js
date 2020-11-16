@@ -85,7 +85,56 @@ class Portfolio extends Component {
         axios.get('/api/experience/').then(res=>{
             const experiences = res.data;
             this.setState({loading: false, experiences:experiences});
-            this.setState({expShow:{title:"testing"}})
+            let today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            const yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+            let dateline;
+            let value = [];
+            let content = []
+            let count = 0
+            for (let i=0; i<experiences.length;i++){
+                for (let b=0; b<experiences[i].experience.length;b++){
+                    dateline = experiences[i].experience[b].time_start
+                    value.unshift(dateline)
+                    content.unshift(
+                        {
+                            data:dateline,
+                            title:experiences[i].experience[b].title,
+                            description:experiences[i].experience[b].description,
+                            nature:experiences[i].experience[b].nature,
+                            company:experiences[i].experience[b].company,
+                            location:experiences[i].experience[b].location,
+                        }
+                    )
+                    if(count===0){
+                        dateline = today
+                        value.push("Current")
+                        content.push(
+                            {
+                                data:dateline,
+                                title:experiences[i].experience[b].title,
+                                description:experiences[i].experience[b].description,
+                                nature:experiences[i].experience[b].nature,
+                                company:experiences[i].experience[b].company,
+                                location:experiences[i].experience[b].location,
+                            }
+                        )
+                    }
+                    count++;
+                }
+            }
+
+
+            this.setState({
+                expShow:content[content.length-1],
+                experienceValue:value,
+                experienceContent:content,
+                curIdx:content.length-1,
+            })
+
         })
     };
 
@@ -194,31 +243,6 @@ class Portfolio extends Component {
 
     onChange = e =>{
         this.setState({[e.target.name]: e.target.value})
-    };
-
-    showExperience = (id)=>{
-        // const experiences = this.state.experiences;
-        // experiences.forEach(function(year){
-        //     year.experience.forEach(function(exp){
-        //         if (exp.id !== id){
-        //             const addr = document.getElementById(`add-${exp.id}`);
-        //             const desc = document.getElementById(`desc-${exp.id}`);
-        //             const o_card = document.getElementById(`exp-card-${exp.id}`);
-        //             if (addr.classList.contains("active")){
-        //                 addr.classList.toggle("active");
-        //                 desc.classList.toggle("active");
-        //                 o_card.classList.toggle("active");
-        //             }
-        //         }
-        //     });
-        //
-        // });
-        // const address = document.getElementById(`add-${id}`);
-        // const description = document.getElementById(`desc-${id}`);
-        // const card = document.getElementById(`exp-card-${id}`);
-        // card.classList.toggle("active");
-        // address.classList.toggle("active");
-        // description.classList.toggle("active");
     };
 
     render(){
@@ -360,60 +384,60 @@ class Portfolio extends Component {
                                     <div>
                                         <div className="page">
                                             <div className="timeline vertical-time">
+                                                {experiences.map(item=>{
+                                                    const {year, experience} = item;
+                                                    return (
+                                                        <div className="timeline__group" key={`year-${year}`}>
+                                                            <span className="timeline__year time" aria-hidden="true">{year}</span>
+                                                            <div className="timeline__cards">
+                                                                {
+                                                                    experience.map(indi_exp=>{
+                                                                        const {id,title,nature,company,location,time_start,
+                                                                            time_end,description,month,day} = indi_exp;
+                                                                        return(
+                                                                            <div className="timeline__card card" key={`exp-card-${id}`} id={`exp-card-${id}`}>
+                                                                                <header className="card__header marginBelow1 ">
+                                                                                    <time className="time" dateTime={time_start}>
+                                                                                        <span className="time__month">{month}</span>
+                                                                                    </time>
+                                                                                    <span>&rarr;</span>
+                                                                                    <time className="time" dateTime={time_end}>
+                                                                                        <span className="time__month">{time_end}</span>
+                                                                                    </time>
+                                                                                    <h3 className="card__title r-title">{title}{nature? <span style={{fontSize: "0.7rem"}}>&nbsp;&nbsp;|{nature}</span>:""}</h3>
+                                                                                    <div className="card__content" id={`add-${id}`}>At {company} - {location}</div>
 
-        {experiences.map(item=>{
-            const {year, experience} = item;
-            return (
-                <div className="timeline__group" key={`year-${year}`}>
-                    <span className="timeline__year time" aria-hidden="true">{year}</span>
-                    <div className="timeline__cards">
-                        {
-                            experience.map(indi_exp=>{
-                                const {id,title,nature,company,location,time_start,
-                                    time_end,description,month,day} = indi_exp;
-                                return(
-                                    <div className="timeline__card card" key={`exp-card-${id}`} id={`exp-card-${id}`} onClick={this.showExperience.bind(this, id)}>
-                                        <header className="card__header marginBelow1 ">
-                                            <time className="time" dateTime={time_start}>
-                                                <span className="time__month">{month}</span>
-                                            </time>
-                                            <span>&rarr;</span>
-                                            <time className="time" dateTime={time_end}>
-                                                <span className="time__month">{time_end}</span>
-                                            </time>
-                                            <h3 className="card__title r-title">{title}{nature? <span style={{fontSize: "0.7rem"}}>&nbsp;&nbsp;|{nature}</span>:""}</h3>
-                                            <div className="card__content" id={`add-${id}`}>At {company} - {location}</div>
-
-                                        </header>
-                                        <div className="card__content" id={`desc-${id}`}>
-                                            <p>{description}</p>
-                                        </div>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
-                </div>
-            )
-        })}
+                                                                                </header>
+                                                                                <div className="card__content" id={`desc-${id}`}>
+                                                                                    <p>{description}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        );
+                                                                    })
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })}
                                             </div>
-                                            <div className="horizontal-timeline">
 
-
+                                            <div className="timeline-horizontal">
                                                 <div
                                                     style={{
                                                         width: "100%",
                                                         height: "100px",
                                                         margin: "0 auto",
                                                         marginTop: "20px",
-                                                        fontSize: "15px"
+                                                        fontSize: "15px",
+                                                        whiteSpace: 'nowrap',
                                                     }}
                                                 >
                                                     <HorizontalTimeline
                                                         styles={{
                                                             background: "#f8f8f8",
-                                                            foreground: "#1A79AD",
-                                                            outline: "#dfdfdf"
+                                                            foreground: "#EF783C",
+                                                            outline: "#46465C",
+
                                                         }}
                                                         index={this.state.curIdx}
                                                         indexClick={index => {
@@ -422,25 +446,22 @@ class Portfolio extends Component {
                                                             this.setState({
                                                                 curIdx: index,
                                                                 prevIdx: curIdx,
-                                                                expShow:{
-                                                                    title:exp.title,
-                                                                }
+                                                                expShow:exp
                                                             });
                                                         }}
                                                         values={this.state.experienceContent.map(x => x.data)}
                                                     />
                                                 </div>
-                                                <div className="text-center">
+                                                <div>
                                                     {/* any arbitrary component can go here */}
-                                                        <div>{this.state.expShow.title}</div>
+                                                    <h3 className="card__title r-title">{this.state.expShow.title}{this.state.expShow.nature? <span style={{fontSize: "0.7rem"}}>&nbsp;&nbsp;|{this.state.expShow.nature}</span>:""}</h3>
+                                                    <div>At {this.state.expShow.company} - {this.state.expShow.location}</div>
+                                                    <div >
+                                                        <p>{this.state.expShow.description}</p>
+                                                    </div>
                                                 </div>
-        {/*{experiences.map(item=>{*/}
-        {/*    const {year, experience} = item;*/}
-        {/*    console.log(item);*/}
-        {/*    return (*/}
-        {/*        <div/>*/}
-        {/*    )*/}
-        {/*})}*/}
+
+
                                             </div>
                                         </div>
 

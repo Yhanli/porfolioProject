@@ -174,3 +174,24 @@ p:last-child{
 .timeline__group{
   cursor: pointer;
 }
+
+.timeline-horizontal{
+  width: 93vw;
+  max-width: 1500px;
+  text-align: center;
+  p {
+    padding-top: 2rem;
+    padding-right: 1rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .vertical-time{
+    display: none;
+  }
+}
+@media screen and (max-width: 750px) {
+  .timeline-horizontal {
+    display: none;
+  }
+}
