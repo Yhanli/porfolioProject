@@ -13,3 +13,7 @@ class Records(models.Model):
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Record"
+        verbose_name_plural = "Records"
